@@ -1,0 +1,48 @@
+site_name: TraceDrift
+site_description: Gerador sintético de traces OpenTelemetry, logs correlacionados e anomalias de observabilidade.
+site_author: TraceDrift Contributors
+repo_url: https://github.com/PauloHFA/TraceDrift
+repo_name: PauloHFA/TraceDrift
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Mudar para modo escuro
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Mudar para modo claro
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - content.code.copy
+
+nav:
+  - Início: README.md
+  - Guia do Usuário: docs/guia_usuario.md
+  - Dataset Card: docs/DATASET_CARD.md
+  - ADRs:
+      - "0001: Estratégia Híbrida": docs/adr/0001-hybrid-generation-strategy.md
+      - "0002: Convenções OTLP": docs/adr/0002-otlp-json-conventions.md
+      - "0003: Streaming e Concorrência": docs/adr/0003-streaming-and-concurrency.md
+  - Changelog: CHANGELOG.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - tables
