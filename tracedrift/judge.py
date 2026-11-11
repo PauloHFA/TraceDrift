@@ -106,8 +106,14 @@ class TraceJudge:
         if report.scores:
             report.total_evaluated = len(report.scores)
             report.average_score = sum(s.score for s in report.scores) / report.total_evaluated
-            report.average_realism = sum(s.realism_score for s in report.scores) / report.total_evaluated
-            report.average_coherence = sum(s.coherence_score for s in report.scores) / report.total_evaluated
-            report.average_observability = sum(s.observability_score for s in report.scores) / report.total_evaluated
+            report.average_realism = (
+                sum(s.realism_score for s in report.scores) / report.total_evaluated
+            )
+            report.average_coherence = (
+                sum(s.coherence_score for s in report.scores) / report.total_evaluated
+            )
+            report.average_observability = (
+                sum(s.observability_score for s in report.scores) / report.total_evaluated
+            )
 
         return report

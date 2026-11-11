@@ -436,8 +436,12 @@ if __name__ == "__main__":
 
 @app.command()
 def judge(
-    traces_file: Path = typer.Argument(Path("datasets/output/traces.jsonl"), help="Arquivo traces.jsonl a avaliar"),
-    flow: Path = typer.Option(Path("configs/e_commerce_flow.yaml"), "--flow", "-f", help="Fluxo de referência"),
+    traces_file: Path = typer.Argument(
+        Path("datasets/output/traces.jsonl"), help="Arquivo traces.jsonl a avaliar"
+    ),
+    flow: Path = typer.Option(
+        Path("configs/e_commerce_flow.yaml"), "--flow", "-f", help="Fluxo de referência"
+    ),
     count: int = typer.Option(5, "--count", "-n", help="Número de traces a avaliar"),
     model: str | None = typer.Option(None, "--model", "-m", help="Modelo avaliador (LLM-as-judge)"),
 ) -> None:
@@ -451,10 +455,14 @@ def judge(
 
     from tracedrift.judge import TraceJudge
 
-    console.print(f"[cyan]Iniciando avaliação LLM-as-judge de {count} traces com modelo '{client.model}'...[/cyan]\n")
+    console.print(
+        f"[cyan]Iniciando avaliação LLM-as-judge de {count} traces com modelo '{client.model}'...[/cyan]\n"
+    )
 
     evaluator = TraceJudge(client=client)
-    report_data = asyncio.run(evaluator.evaluate_traces_file(traces_file, flow=flow_obj, max_traces=count))
+    report_data = asyncio.run(
+        evaluator.evaluate_traces_file(traces_file, flow=flow_obj, max_traces=count)
+    )
 
     table = Table(title="Resultado da Avaliação LLM-as-Judge", expand=True)
     table.add_column("Trace ID", style="dim", width=14)
@@ -478,4 +486,6 @@ def judge(
         )
 
     console.print(table)
-    console.print(f"\n[bold]Média Geral de Avaliação:[/bold] [bold green]{report_data.average_score:.2f} / 5.0[/bold green] (Meta: >= 4.0)")
+    console.print(
+        f"\n[bold]Média Geral de Avaliação:[/bold] [bold green]{report_data.average_score:.2f} / 5.0[/bold green] (Meta: >= 4.0)"
+    )
