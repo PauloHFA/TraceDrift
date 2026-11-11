@@ -77,7 +77,7 @@ select = [
     "ARG", # unused arguments
     "SIM", # flake8-simplify
 ]
-ignore = ["E501"]
+ignore = ["E501", "B008"]
 
 [tool.mypy]
 python_version = "3.11"
