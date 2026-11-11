@@ -27,9 +27,7 @@ def send_otlp_http(endpoint: str, payload: dict[str, Any], timeout: float = 30.0
                 headers={"Content-Type": "application/json"},
             )
         if resp.status_code not in (200, 202):
-            raise OTLPSendError(
-                f"O coletor OTLP HTTP retornou código {resp.status_code}: {resp.text}"
-            )
+            raise OTLPSendError(f"O coletor OTLP HTTP retornou código {resp.status_code}: {resp.text}")
         return resp.status_code
     except httpx.HTTPError as err:
         raise OTLPSendError(f"Falha de conexão OTLP HTTP com '{endpoint}': {err}") from err
@@ -56,6 +54,4 @@ def send_otlp_grpc(endpoint: str, payload: dict[str, Any], timeout: float = 30.0
             stub = TraceServiceStub(channel)  # type: ignore[no-untyped-call]
             stub.Export(request, timeout=timeout)
     except grpc.RpcError as err:
-        raise OTLPSendError(
-            f"Falha na chamada gRPC para '{clean_endpoint}': {err.details() if hasattr(err, 'details') else err}"
-        ) from err
+        raise OTLPSendError(f"Falha na chamada gRPC para '{clean_endpoint}': {err.details() if hasattr(err, 'details') else err}") from err

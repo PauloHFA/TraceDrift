@@ -432,3 +432,50 @@ def visualize(
 
 if __name__ == "__main__":
     app()
+
+
+@app.command()
+def judge(
+    traces_file: Path = typer.Argument(Path("datasets/output/traces.jsonl"), help="Arquivo traces.jsonl a avaliar"),
+    flow: Path = typer.Option(Path("configs/e_commerce_flow.yaml"), "--flow", "-f", help="Fluxo de referência"),
+    count: int = typer.Option(5, "--count", "-n", help="Número de traces a avaliar"),
+    model: str | None = typer.Option(None, "--model", "-m", help="Modelo avaliador (LLM-as-judge)"),
+) -> None:
+    """Executa a avaliação LLM-as-judge em traces gerados avaliando realismo, coerência e riqueza."""
+    if not traces_file.exists():
+        console.print(f"[bold red]Arquivo não encontrado:[/bold red] {traces_file}")
+        raise typer.Exit(code=1)
+
+    flow_obj = load_flow_from_file(flow)
+    client = LLMClient(model=model)
+
+    from tracedrift.judge import TraceJudge
+
+    console.print(f"[cyan]Iniciando avaliação LLM-as-judge de {count} traces com modelo '{client.model}'...[/cyan]\n")
+
+    evaluator = TraceJudge(client=client)
+    report_data = asyncio.run(evaluator.evaluate_traces_file(traces_file, flow=flow_obj, max_traces=count))
+
+    table = Table(title="Resultado da Avaliação LLM-as-Judge", expand=True)
+    table.add_column("Trace ID", style="dim", width=14)
+    table.add_column("Anomalia", style="cyan")
+    table.add_column("Veredito", width=12)
+    table.add_column("Nota Geral", justify="right", width=10)
+    table.add_column("Realismo", justify="right", width=10)
+    table.add_column("Coerência", justify="right", width=10)
+    table.add_column("Riqueza OTel", justify="right", width=12)
+
+    for item in report_data.scores:
+        verdict_color = "green" if "APROV" in item.verdict.upper() else "red"
+        table.add_row(
+            f"{item.trace_id[:6]}...{item.trace_id[-4:]}",
+            item.anomaly_type,
+            f"[{verdict_color}]{item.verdict}[/{verdict_color}]",
+            f"{item.score:.1f} / 5",
+            f"{item.realism_score:.1f}",
+            f"{item.coherence_score:.1f}",
+            f"{item.observability_score:.1f}",
+        )
+
+    console.print(table)
+    console.print(f"\n[bold]Média Geral de Avaliação:[/bold] [bold green]{report_data.average_score:.2f} / 5.0[/bold green] (Meta: >= 4.0)")
