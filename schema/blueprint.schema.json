@@ -1,0 +1,281 @@
+{
+  "$defs": {
+    "BlueprintEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "description": "Nome do evento (ex: exception)",
+          "title": "Name",
+          "type": "string"
+        },
+        "offset_ms": {
+          "description": "Deslocamento relativo ao início do span pai",
+          "minimum": 0,
+          "title": "Offset Ms",
+          "type": "number"
+        },
+        "attributes": {
+          "additionalProperties": true,
+          "description": "Atributos do evento",
+          "title": "Attributes",
+          "type": "object"
+        }
+      },
+      "required": [
+        "name",
+        "offset_ms"
+      ],
+      "title": "BlueprintEvent",
+      "type": "object"
+    },
+    "BlueprintLink": {
+      "additionalProperties": false,
+      "properties": {
+        "span_ref": {
+          "description": "Rótulo simbólico do span vinculado",
+          "title": "Span Ref",
+          "type": "string"
+        },
+        "attributes": {
+          "additionalProperties": true,
+          "description": "Atributos do link",
+          "title": "Attributes",
+          "type": "object"
+        }
+      },
+      "required": [
+        "span_ref"
+      ],
+      "title": "BlueprintLink",
+      "type": "object"
+    },
+    "BlueprintLog": {
+      "additionalProperties": false,
+      "properties": {
+        "span_ref": {
+          "description": "Rótulo simbólico do span correlacionado",
+          "title": "Span Ref",
+          "type": "string"
+        },
+        "severity": {
+          "default": "INFO",
+          "description": "Severidade do log (DEBUG, INFO, WARN, ERROR, FATAL)",
+          "title": "Severity",
+          "type": "string"
+        },
+        "body": {
+          "description": "Mensagem do log",
+          "title": "Body",
+          "type": "string"
+        },
+        "offset_ms": {
+          "description": "Deslocamento relativo ao início do span correlacionado",
+          "minimum": 0,
+          "title": "Offset Ms",
+          "type": "number"
+        },
+        "attributes": {
+          "additionalProperties": true,
+          "title": "Attributes",
+          "type": "object"
+        }
+      },
+      "required": [
+        "span_ref",
+        "body",
+        "offset_ms"
+      ],
+      "title": "BlueprintLog",
+      "type": "object"
+    },
+    "BlueprintSpan": {
+      "additionalProperties": false,
+      "properties": {
+        "ref": {
+          "description": "Rótulo simbólico único do span (ex: s1, s2)",
+          "title": "Ref",
+          "type": "string"
+        },
+        "parent_ref": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Rótulo do pai. Exatamente um span na árvore deve ter parent_ref=None",
+          "title": "Parent Ref"
+        },
+        "service_name": {
+          "description": "Serviço executor (deve existir no flow.yaml)",
+          "title": "Service Name",
+          "type": "string"
+        },
+        "name": {
+          "description": "Nome da operação",
+          "title": "Name",
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/$defs/SpanKindEnum",
+          "description": "Tipo de span (SERVER, CLIENT, PRODUCER, CONSUMER, INTERNAL)"
+        },
+        "offset_ms": {
+          "description": "Deslocamento relativo ao início do pai (0 para o span raiz)",
+          "minimum": 0,
+          "title": "Offset Ms",
+          "type": "number"
+        },
+        "duration_ms": {
+          "description": "Duração do span em milissegundos",
+          "exclusiveMinimum": 0,
+          "title": "Duration Ms",
+          "type": "number"
+        },
+        "status": {
+          "$ref": "#/$defs/BlueprintSpanStatus"
+        },
+        "attributes": {
+          "additionalProperties": true,
+          "title": "Attributes",
+          "type": "object"
+        },
+        "events": {
+          "items": {
+            "$ref": "#/$defs/BlueprintEvent"
+          },
+          "title": "Events",
+          "type": "array"
+        },
+        "links": {
+          "items": {
+            "$ref": "#/$defs/BlueprintLink"
+          },
+          "title": "Links",
+          "type": "array"
+        }
+      },
+      "required": [
+        "ref",
+        "service_name",
+        "name",
+        "kind",
+        "offset_ms",
+        "duration_ms"
+      ],
+      "title": "BlueprintSpan",
+      "type": "object"
+    },
+    "BlueprintSpanStatus": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "$ref": "#/$defs/StatusCodeEnum",
+          "default": "OK",
+          "description": "Código de status OTel (OK, ERROR, UNSET)"
+        },
+        "message": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Mensagem de erro (quando code == ERROR)",
+          "title": "Message"
+        }
+      },
+      "title": "BlueprintSpanStatus",
+      "type": "object"
+    },
+    "SpanKindEnum": {
+      "enum": [
+        "SERVER",
+        "CLIENT",
+        "PRODUCER",
+        "CONSUMER",
+        "INTERNAL"
+      ],
+      "title": "SpanKindEnum",
+      "type": "string"
+    },
+    "StatusCodeEnum": {
+      "enum": [
+        "UNSET",
+        "OK",
+        "ERROR"
+      ],
+      "title": "StatusCodeEnum",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "scenario": {
+      "description": "Título descritivo do cenário simulado",
+      "title": "Scenario",
+      "type": "string"
+    },
+    "anomaly_type": {
+      "description": "ID da anomalia sorteada ou 'normal'",
+      "title": "Anomaly Type",
+      "type": "string"
+    },
+    "spans": {
+      "description": "Lista de spans do blueprint",
+      "items": {
+        "$ref": "#/$defs/BlueprintSpan"
+      },
+      "minItems": 1,
+      "title": "Spans",
+      "type": "array"
+    },
+    "logs": {
+      "description": "Lista de logs correlacionados",
+      "items": {
+        "$ref": "#/$defs/BlueprintLog"
+      },
+      "title": "Logs",
+      "type": "array"
+    },
+    "root_cause_ref": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Rótulo simbólico do span causador (None para normal)",
+      "title": "Root Cause Ref"
+    },
+    "root_cause_summary": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Diagnóstico descritivo da causa-raiz",
+      "title": "Root Cause Summary"
+    }
+  },
+  "required": [
+    "scenario",
+    "anomaly_type",
+    "spans"
+  ],
+  "title": "BlueprintTrace",
+  "type": "object"
+}

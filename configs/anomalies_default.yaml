@@ -1,0 +1,221 @@
+version: "1.0.0"
+anomalies:
+  - id: "thundering_herd"
+    name: "Thundering Herd"
+    description: "Múltiplos clientes ou workers acordam simultaneamente para computar o mesmo recurso após invalidação de cache, sobrecarregando o backend e o banco de dados."
+    applicable_technologies: ["redis", "memcached", "postgres", "mysql", "http"]
+    signature:
+      latency_impact: "high_spike"
+      error_patterns: ["timeout", "connection_refused"]
+      retry_patterns: "sporadic"
+    typical_root_cause_span: "db_query"
+    default_severity: "HIGH"
+
+  - id: "database_lock_contention"
+    name: "Database Lock Contention"
+    description: "Transações concorrentes competem por bloqueios de linha ou tabela exclusivos, acumulando filas de espera e aumentando vertiginosamente o tempo de resposta."
+    applicable_technologies: ["postgres", "mysql", "sql", "oracle"]
+    signature:
+      latency_impact: "exponential_tail"
+      error_patterns: ["lock_not_available", "statement_timeout"]
+      retry_patterns: "increasing"
+    typical_root_cause_span: "db_transaction"
+    default_severity: "HIGH"
+
+  - id: "circuit_breaker_tripping"
+    name: "Circuit Breaker Tripping"
+    description: "Após uma sequência repetida de falhas em um serviço downstream, o circuit breaker entra em estado OPEN, rejeitando requisições subsequentes de forma ultra-rápida com erro explícito."
+    applicable_technologies: ["http", "grpc", "resilience4j", "istio"]
+    signature:
+      latency_impact: "bimodal"
+      error_patterns: ["circuit_breaker_open", "service_unavailable"]
+      retry_patterns: "blocked"
+    typical_root_cause_span: "downstream_client"
+    default_severity: "CRITICAL"
+
+  - id: "downstream_network_partition"
+    name: "Downstream Network Partition"
+    description: "Isolamento parcial ou perda abrupta de conectividade de rede com um microsserviço ou dependência externa, levando a timeouts sistemáticos de conexão."
+    applicable_technologies: ["http", "grpc", "tcp"]
+    signature:
+      latency_impact: "constant_timeout"
+      error_patterns: ["connect_timeout", "host_unreachable"]
+      retry_patterns: "exhausted"
+    typical_root_cause_span: "http_outbound"
+    default_severity: "CRITICAL"
+
+  - id: "retry_storm"
+    name: "Retry Storm"
+    description: "Serviços clientes disparam retries imediatos ou sem jitter exponencial após falhas transitórias, multiplicando o volume de requisições e agravando o colapso do downstream."
+    applicable_technologies: ["http", "grpc", "amqp"]
+    signature:
+      latency_impact: "severe_multiplication"
+      error_patterns: ["too_many_requests", "service_unavailable"]
+      retry_patterns: "rapid_burst"
+    typical_root_cause_span: "client_retry_loop"
+    default_severity: "CRITICAL"
+
+  - id: "thread_pool_exhaustion"
+    name: "Thread Pool Exhaustion"
+    description: "Todas as threads de processamento da aplicação ficam retidas em chamadas bloqueantes lentas, impedindo a recepção de novas requisições e gerando filas na porta do servidor."
+    applicable_technologies: ["jvm", "fastapi", "spring", "nodejs"]
+    signature:
+      latency_impact: "linear_growth"
+      error_patterns: ["pool_exhausted", "queue_capacity_exceeded"]
+      retry_patterns: "client_timeout"
+    typical_root_cause_span: "server_request_handler"
+    default_severity: "HIGH"
+
+  - id: "slow_consumer"
+    name: "Slow Consumer"
+    description: "Consumidor assíncrono processa mensagens em ritmo significativamente inferior à taxa de publicação, provocando enfileiramento massivo e dilatação de lag."
+    applicable_technologies: ["rabbitmq", "kafka", "amqp", "sqs"]
+    signature:
+      latency_impact: "delayed_start"
+      error_patterns: ["processing_lag"]
+      retry_patterns: "requeue"
+    typical_root_cause_span: "queue_consumer"
+    default_severity: "MEDIUM"
+
+  - id: "n_plus_one_query"
+    name: "N+1 Query Problem"
+    description: "Padrão ineficiente de acesso a dados onde uma consulta inicial é sucedida por N consultas individuais adicionais em loop dentro de uma única requisição."
+    applicable_technologies: ["postgres", "mysql", "sql", "hibernate", "sqlalchemy"]
+    signature:
+      latency_impact: "high_span_count"
+      error_patterns: []
+      retry_patterns: "none"
+    typical_root_cause_span: "db_iterative_query"
+    default_severity: "MEDIUM"
+
+  - id: "cache_stampede"
+    name: "Cache Stampede"
+    description: "Expiração simultânea de chave de cache altamente requisitada, forçando centenas de processos concorrentes a regenerar o mesmo resultado pesado no banco."
+    applicable_technologies: ["redis", "memcached", "postgres"]
+    signature:
+      latency_impact: "sudden_spike"
+      error_patterns: ["cpu_throttle", "read_timeout"]
+      retry_patterns: "none"
+    typical_root_cause_span: "cache_miss_handler"
+    default_severity: "HIGH"
+
+  - id: "partial_db_failure"
+    name: "Partial DB Failure"
+    description: "Falha de um nó específico em um cluster de banco distribuído ou réplica de leitura, causando erros intermitentes de consulta enquanto as escritas persistem."
+    applicable_technologies: ["postgres", "mongodb", "cassandra"]
+    signature:
+      latency_impact: "intermittent_spike"
+      error_patterns: ["replica_unreachable", "read_quorum_loss"]
+      retry_patterns: "fallback_to_primary"
+    typical_root_cause_span: "db_read_replica"
+    default_severity: "HIGH"
+
+  - id: "cascading_timeout"
+    name: "Cascading Timeout"
+    description: "Atraso no serviço mais profundo da cadeia de chamadas esgota sucessivamente os timeouts configurados em cada camada intermediária, propagando falhas até o gateway."
+    applicable_technologies: ["http", "grpc"]
+    signature:
+      latency_impact: "cumulative_timeout"
+      error_patterns: ["gateway_timeout", "deadline_exceeded"]
+      retry_patterns: "upstream_abort"
+    typical_root_cause_span: "deepest_downstream_dependency"
+    default_severity: "CRITICAL"
+
+  - id: "connection_pool_starvation"
+    name: "Connection Pool Starvation"
+    description: "O pool de conexões com o banco ou cache esgota todas as conexões ativas devido a vazamento ou operações lentas, bloqueando novas transações na fila de aquisição."
+    applicable_technologies: ["postgres", "mysql", "redis", "hikari"]
+    signature:
+      latency_impact: "acquisition_wait_timeout"
+      error_patterns: ["connection_pool_timeout", "connection_acquire_failure"]
+      retry_patterns: "client_retry"
+    typical_root_cause_span: "db_connection_acquire"
+    default_severity: "HIGH"
+
+  - id: "dns_resolution_delay"
+    name: "DNS Resolution Delay"
+    description: "Lentidão intermitente no servidor DNS interno do cluster gera um atraso inicial em cada conexão TCP/HTTP antes mesmo do envio dos bytes da requisição."
+    applicable_technologies: ["http", "grpc", "core_dns"]
+    signature:
+      latency_impact: "initial_overhead"
+      error_patterns: ["name_resolution_failure", "dns_timeout"]
+      retry_patterns: "standard"
+    typical_root_cause_span: "dns_lookup"
+    default_severity: "MEDIUM"
+
+  - id: "garbage_collection_pause"
+    name: "Garbage Collection Pause"
+    description: "Pausa do tipo stop-the-world pelo coletor de lixo (GC) congela a execução da JVM ou do runtime, dilatando simultaneamente a duração de todos os spans em andamento."
+    applicable_technologies: ["jvm", "spring", "go", "java"]
+    signature:
+      latency_impact: "universal_span_stretching"
+      error_patterns: []
+      retry_patterns: "none"
+    typical_root_cause_span: "gc_pause_window"
+    default_severity: "HIGH"
+
+  - id: "rate_limiter_throttling"
+    name: "Rate Limiter Throttling"
+    description: "O serviço de destino aciona algoritmo de limitação de taxa (ex: token bucket) e rejeita requisições excedentes com HTTP 429 Too Many Requests."
+    applicable_technologies: ["http", "grpc", "redis"]
+    signature:
+      latency_impact: "rapid_rejection"
+      error_patterns: ["too_many_requests", "quota_exceeded"]
+      retry_patterns: "backoff_suggested"
+    typical_root_cause_span: "rate_limiter_check"
+    default_severity: "MEDIUM"
+
+  - id: "deadlock_abort"
+    name: "Deadlock Abort"
+    description: "O mecanismo do banco de dados detecta um ciclo de bloqueios mortais entre duas transações concorrentes e encerra abruptamente uma delas com erro de deadlock."
+    applicable_technologies: ["postgres", "mysql", "sql"]
+    signature:
+      latency_impact: "sudden_failure"
+      error_patterns: ["deadlock_detected", "transaction_aborted"]
+      retry_patterns: "immediate_transaction_retry"
+    typical_root_cause_span: "sql_execute"
+    default_severity: "HIGH"
+
+  - id: "asynchronous_queue_overflow"
+    name: "Asynchronous Queue Overflow"
+    description: "A fila de mensagens atinge a cota de memória ou contagem máxima de mensagens não reconhecidas, rejeitando novos envios ou descartando mensagens com overflow."
+    applicable_technologies: ["rabbitmq", "kafka", "amqp"]
+    signature:
+      latency_impact: "producer_backpressure"
+      error_patterns: ["queue_full", "nack_received"]
+      retry_patterns: "circuit_break"
+    typical_root_cause_span: "queue_publish"
+    default_severity: "HIGH"
+
+  - id: "microservice_fallback_degradation"
+    name: "Microservice Fallback Degradation"
+    description: "O serviço primário falha silenciosamente e o orquestrador aciona um fallback degradado (ex: dados em cache desatualizado ou resposta padrão empobrecida)."
+    applicable_technologies: ["http", "grpc"]
+    signature:
+      latency_impact: "moderate_increase"
+      error_patterns: ["fallback_activated"]
+      retry_patterns: "suppressed"
+    typical_root_cause_span: "fallback_adapter"
+    default_severity: "LOW"
+
+  - id: "hotspot_partition"
+    name: "Hotspot Partition"
+    description: "Distribuição desigual de chaves de partição satura desproporcionalmente um único nó do cluster, causando lentidão seletiva em requisições dirigidas a esse tenant/chave."
+    applicable_technologies: ["kafka", "cassandra", "dynamodb", "redis"]
+    signature:
+      latency_impact: "key_skewed_latency"
+      error_patterns: ["node_throttled"]
+      retry_patterns: "none"
+    typical_root_cause_span: "partition_broker"
+    default_severity: "HIGH"
+
+  - id: "memory_leak_latency_drift"
+    name: "Memory Leak Latency Drift"
+    description: "Degradação cumulativa de memória heap provoca frequentes ciclos curtos de coleta de lixo e paginação, aumentando progressivamente os tempos de resposta ao longo do tempo."
+    applicable_technologies: ["fastapi", "nodejs", "jvm", "python"]
+    signature:
+      latency_impact: "continuous_drift"
+      error_patterns: ["out_of_memory_warning"]
+      retry_patterns: "none"
+    typical_root_cause_span: "memory_intensive_task"
+    default_severity: "HIGH"

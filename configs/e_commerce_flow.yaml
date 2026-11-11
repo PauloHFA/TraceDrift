@@ -1,0 +1,78 @@
+name: "E-Commerce Checkout Flow"
+description: "Fluxo de finalização de compra com gateway, pedidos, pagamentos e estoque"
+
+services:
+  - name: "api-gateway"
+    technology: "fastapi"
+    tier: "gateway"
+  - name: "order-service"
+    technology: "fastapi"
+    tier: "backend"
+  - name: "payment-service"
+    technology: "spring"
+    tier: "backend"
+  - name: "inventory-service"
+    technology: "go"
+    tier: "backend"
+  - name: "postgres-db"
+    technology: "postgres"
+    tier: "database"
+  - name: "redis-cache"
+    technology: "redis"
+    tier: "cache"
+
+steps:
+  - name: "gateway-checkout"
+    service: "api-gateway"
+    operation: "POST /api/v1/checkout"
+    protocol: "HTTP"
+    target_service: "order-service"
+    target_operation: "create_order"
+    is_async: false
+    slo_ms: 500.0
+    baseline_latency_p50_ms: 120.0
+    baseline_latency_p99_ms: 350.0
+
+  - name: "order-check-inventory"
+    service: "order-service"
+    operation: "check_stock"
+    protocol: "GRPC"
+    target_service: "inventory-service"
+    target_operation: "CheckStock"
+    is_async: false
+    slo_ms: 100.0
+    baseline_latency_p50_ms: 25.0
+    baseline_latency_p99_ms: 80.0
+
+  - name: "inventory-query-cache"
+    service: "inventory-service"
+    operation: "GET item:stock"
+    protocol: "HTTP"
+    target_service: "redis-cache"
+    target_operation: "MGET"
+    is_async: false
+    slo_ms: 20.0
+    baseline_latency_p50_ms: 3.0
+    baseline_latency_p99_ms: 12.0
+
+  - name: "order-process-payment"
+    service: "order-service"
+    operation: "authorize_payment"
+    protocol: "HTTP"
+    target_service: "payment-service"
+    target_operation: "POST /payments/authorize"
+    is_async: false
+    slo_ms: 300.0
+    baseline_latency_p50_ms: 85.0
+    baseline_latency_p99_ms: 220.0
+
+  - name: "payment-persist-ledger"
+    service: "payment-service"
+    operation: "INSERT INTO payments"
+    protocol: "SQL"
+    target_service: "postgres-db"
+    target_operation: "INSERT"
+    is_async: false
+    slo_ms: 80.0
+    baseline_latency_p50_ms: 15.0
+    baseline_latency_p99_ms: 60.0

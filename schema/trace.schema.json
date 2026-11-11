@@ -1,0 +1,282 @@
+{
+  "$defs": {
+    "GenerationMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "title": "Model",
+          "type": "string"
+        },
+        "prompt_version": {
+          "title": "Prompt Version",
+          "type": "string"
+        },
+        "seed": {
+          "title": "Seed",
+          "type": "integer"
+        },
+        "otel_semconv_version": {
+          "default": "1.25.0",
+          "title": "Otel Semconv Version",
+          "type": "string"
+        },
+        "schema_version": {
+          "default": "1.0.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "synthetic": {
+          "default": true,
+          "title": "Synthetic",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "model",
+        "prompt_version",
+        "seed"
+      ],
+      "title": "GenerationMetadata",
+      "type": "object"
+    },
+    "InternalLog": {
+      "additionalProperties": false,
+      "properties": {
+        "trace_id": {
+          "title": "Trace Id",
+          "type": "string"
+        },
+        "span_id": {
+          "title": "Span Id",
+          "type": "string"
+        },
+        "timestamp_unix_nano": {
+          "title": "Timestamp Unix Nano",
+          "type": "integer"
+        },
+        "severity_text": {
+          "title": "Severity Text",
+          "type": "string"
+        },
+        "severity_number": {
+          "title": "Severity Number",
+          "type": "integer"
+        },
+        "body": {
+          "title": "Body",
+          "type": "string"
+        },
+        "service_name": {
+          "title": "Service Name",
+          "type": "string"
+        },
+        "attributes": {
+          "additionalProperties": true,
+          "title": "Attributes",
+          "type": "object"
+        }
+      },
+      "required": [
+        "trace_id",
+        "span_id",
+        "timestamp_unix_nano",
+        "severity_text",
+        "severity_number",
+        "body",
+        "service_name"
+      ],
+      "title": "InternalLog",
+      "type": "object"
+    },
+    "InternalSpan": {
+      "additionalProperties": false,
+      "properties": {
+        "trace_id": {
+          "description": "ID do trace em 32 caracteres hexadecimais minúsculos",
+          "title": "Trace Id",
+          "type": "string"
+        },
+        "span_id": {
+          "description": "ID do span em 16 caracteres hexadecimais minúsculos",
+          "title": "Span Id",
+          "type": "string"
+        },
+        "parent_span_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "ID do span pai em 16 caracteres hexadecimais",
+          "title": "Parent Span Id"
+        },
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "service_name": {
+          "title": "Service Name",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Ex: SPAN_KIND_SERVER",
+          "title": "Kind",
+          "type": "string"
+        },
+        "start_time_unix_nano": {
+          "description": "Instante de início em nanossegundos Unix",
+          "title": "Start Time Unix Nano",
+          "type": "integer"
+        },
+        "end_time_unix_nano": {
+          "description": "Instante de término em nanossegundos Unix",
+          "title": "End Time Unix Nano",
+          "type": "integer"
+        },
+        "status": {
+          "additionalProperties": true,
+          "title": "Status",
+          "type": "object"
+        },
+        "attributes": {
+          "additionalProperties": true,
+          "title": "Attributes",
+          "type": "object"
+        },
+        "events": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Events",
+          "type": "array"
+        },
+        "links": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Links",
+          "type": "array"
+        }
+      },
+      "required": [
+        "trace_id",
+        "span_id",
+        "name",
+        "service_name",
+        "kind",
+        "start_time_unix_nano",
+        "end_time_unix_nano"
+      ],
+      "title": "InternalSpan",
+      "type": "object"
+    },
+    "TraceLabel": {
+      "additionalProperties": false,
+      "properties": {
+        "trace_id": {
+          "title": "Trace Id",
+          "type": "string"
+        },
+        "anomaly_type": {
+          "title": "Anomaly Type",
+          "type": "string"
+        },
+        "root_cause_span_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Root Cause Span Id"
+        },
+        "affected_services": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Affected Services",
+          "type": "array"
+        },
+        "is_anomalous": {
+          "title": "Is Anomalous",
+          "type": "boolean"
+        },
+        "severity": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Severity"
+        },
+        "root_cause_summary": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Root Cause Summary"
+        }
+      },
+      "required": [
+        "trace_id",
+        "anomaly_type",
+        "is_anomalous"
+      ],
+      "title": "TraceLabel",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "trace_id": {
+      "title": "Trace Id",
+      "type": "string"
+    },
+    "spans": {
+      "items": {
+        "$ref": "#/$defs/InternalSpan"
+      },
+      "title": "Spans",
+      "type": "array"
+    },
+    "logs": {
+      "items": {
+        "$ref": "#/$defs/InternalLog"
+      },
+      "title": "Logs",
+      "type": "array"
+    },
+    "label": {
+      "$ref": "#/$defs/TraceLabel"
+    },
+    "metadata": {
+      "$ref": "#/$defs/GenerationMetadata"
+    }
+  },
+  "required": [
+    "trace_id",
+    "spans",
+    "label",
+    "metadata"
+  ],
+  "title": "InternalTrace",
+  "type": "object"
+}

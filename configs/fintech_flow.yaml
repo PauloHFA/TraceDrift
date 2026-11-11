@@ -1,0 +1,78 @@
+name: "Fintech Transfer Flow"
+description: "Fluxo de transferência financeira com antifraude síncrono e liquidação/notificação assíncrona"
+
+services:
+  - name: "banking-gateway"
+    technology: "fastapi"
+    tier: "gateway"
+  - name: "transfer-service"
+    technology: "spring"
+    tier: "backend"
+  - name: "fraud-detector"
+    technology: "python"
+    tier: "ml_service"
+  - name: "ledger-db"
+    technology: "postgres"
+    tier: "database"
+  - name: "notification-broker"
+    technology: "rabbitmq"
+    tier: "queue"
+  - name: "notification-worker"
+    technology: "go"
+    tier: "worker"
+
+steps:
+  - name: "initiate-transfer"
+    service: "banking-gateway"
+    operation: "POST /transfers"
+    protocol: "HTTP"
+    target_service: "transfer-service"
+    target_operation: "process_transfer"
+    is_async: false
+    slo_ms: 600.0
+    baseline_latency_p50_ms: 150.0
+    baseline_latency_p99_ms: 450.0
+
+  - name: "evaluate-fraud-risk"
+    service: "transfer-service"
+    operation: "evaluate_risk"
+    protocol: "GRPC"
+    target_service: "fraud-detector"
+    target_operation: "ScoreRisk"
+    is_async: false
+    slo_ms: 120.0
+    baseline_latency_p50_ms: 35.0
+    baseline_latency_p99_ms: 95.0
+
+  - name: "update-ledger-balance"
+    service: "transfer-service"
+    operation: "UPDATE accounts SET balance"
+    protocol: "SQL"
+    target_service: "ledger-db"
+    target_operation: "UPDATE"
+    is_async: false
+    slo_ms: 100.0
+    baseline_latency_p50_ms: 22.0
+    baseline_latency_p99_ms: 75.0
+
+  - name: "publish-transfer-event"
+    service: "transfer-service"
+    operation: "publish_event"
+    protocol: "AMQP"
+    target_service: "notification-broker"
+    target_operation: "basic_publish"
+    is_async: true
+    slo_ms: 50.0
+    baseline_latency_p50_ms: 8.0
+    baseline_latency_p99_ms: 30.0
+
+  - name: "consume-transfer-event"
+    service: "notification-worker"
+    operation: "dispatch_push_notification"
+    protocol: "AMQP"
+    target_service: "notification-broker"
+    target_operation: "basic_consume"
+    is_async: true
+    slo_ms: 400.0
+    baseline_latency_p50_ms: 80.0
+    baseline_latency_p99_ms: 250.0

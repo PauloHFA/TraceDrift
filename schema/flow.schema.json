@@ -1,0 +1,183 @@
+{
+  "$defs": {
+    "OperationStep": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "description": "Identificador do passo",
+          "title": "Name",
+          "type": "string"
+        },
+        "service": {
+          "description": "Serviço que origina o passo",
+          "title": "Service",
+          "type": "string"
+        },
+        "operation": {
+          "description": "Nome da operação (ex: POST /checkout, SELECT users)",
+          "title": "Operation",
+          "type": "string"
+        },
+        "protocol": {
+          "$ref": "#/$defs/ProtocolEnum",
+          "description": "Protocolo da chamada (HTTP, GRPC, AMQP, SQL)"
+        },
+        "target_service": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Serviço de destino caso haja chamada remota",
+          "title": "Target Service"
+        },
+        "target_operation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Operação de destino no serviço remoto",
+          "title": "Target Operation"
+        },
+        "is_async": {
+          "default": false,
+          "description": "Indica se a comunicação é assíncrona (mensageria)",
+          "title": "Is Async",
+          "type": "boolean"
+        },
+        "slo_ms": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "SLO de latência em milissegundos",
+          "title": "Slo Ms"
+        },
+        "baseline_latency_p50_ms": {
+          "default": 20.0,
+          "description": "Latência típica mediana da linha de base",
+          "title": "Baseline Latency P50 Ms",
+          "type": "number"
+        },
+        "baseline_latency_p99_ms": {
+          "default": 100.0,
+          "description": "Latência percentil 99 da linha de base",
+          "title": "Baseline Latency P99 Ms",
+          "type": "number"
+        }
+      },
+      "required": [
+        "name",
+        "service",
+        "operation",
+        "protocol"
+      ],
+      "title": "OperationStep",
+      "type": "object"
+    },
+    "ProtocolEnum": {
+      "enum": [
+        "HTTP",
+        "GRPC",
+        "AMQP",
+        "SQL"
+      ],
+      "title": "ProtocolEnum",
+      "type": "string"
+    },
+    "ServiceNode": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "description": "Nome único do serviço",
+          "title": "Name",
+          "type": "string"
+        },
+        "technology": {
+          "description": "Tecnologia utilizada (ex: fastapi, postgres, rabbitmq)",
+          "title": "Technology",
+          "type": "string"
+        },
+        "tier": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Camada arquitetural (ex: gateway, backend, db)",
+          "title": "Tier"
+        }
+      },
+      "required": [
+        "name",
+        "technology"
+      ],
+      "title": "ServiceNode",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "description": "Nome do fluxo de negócio",
+      "title": "Name",
+      "type": "string"
+    },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Descrição do fluxo",
+      "title": "Description"
+    },
+    "services": {
+      "description": "Lista de microsserviços",
+      "items": {
+        "$ref": "#/$defs/ServiceNode"
+      },
+      "minItems": 1,
+      "title": "Services",
+      "type": "array"
+    },
+    "steps": {
+      "description": "Lista ordenada de passos",
+      "items": {
+        "$ref": "#/$defs/OperationStep"
+      },
+      "minItems": 1,
+      "title": "Steps",
+      "type": "array"
+    }
+  },
+  "required": [
+    "name",
+    "services",
+    "steps"
+  ],
+  "title": "FlowDefinition",
+  "type": "object"
+}
