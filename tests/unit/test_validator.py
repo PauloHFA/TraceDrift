@@ -126,8 +126,10 @@ def test_validator_layer3_async_consumer_allowed_after_producer_ends() -> None:
                 service_name="consumer",
                 kind="SPAN_KIND_CONSUMER",
                 start_time_unix_nano=2100,  # Starts after producer ends
-                end_time_unix_nano=3500,    # Ends well after producer
-                links=[{"trace_id": "4bf92f3577b34da6a3ce929d0e0e4736", "span_id": "0000000000000001"}],
+                end_time_unix_nano=3500,  # Ends well after producer
+                links=[
+                    {"trace_id": "4bf92f3577b34da6a3ce929d0e0e4736", "span_id": "0000000000000001"}
+                ],
             ),
         ],
         label=TraceLabel(

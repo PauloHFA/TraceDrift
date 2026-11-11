@@ -69,7 +69,9 @@ def test_normalizer_materializes_blueprint() -> None:
     )
 
     base_time_nano = 1700000000000000000
-    internal, adjustments = normalizer.normalize(blueprint, trace_index=1, base_time_unix_nano=base_time_nano)
+    internal, adjustments = normalizer.normalize(
+        blueprint, trace_index=1, base_time_unix_nano=base_time_nano
+    )
 
     assert internal.trace_id == generate_trace_id(42, 1)
     assert len(internal.spans) == 2
@@ -120,7 +122,9 @@ def test_normalizer_auto_fix_minor_violation() -> None:
     )
 
     base_time_nano = 1700000000000000000
-    internal, adjustments = normalizer.normalize(blueprint, trace_index=0, base_time_unix_nano=base_time_nano)
+    internal, adjustments = normalizer.normalize(
+        blueprint, trace_index=0, base_time_unix_nano=base_time_nano
+    )
 
     root = internal.spans[0]
     child = internal.spans[1]

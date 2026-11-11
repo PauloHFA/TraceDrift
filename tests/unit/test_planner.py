@@ -21,8 +21,12 @@ def default_catalog():
 
 
 def test_planner_deterministic_with_same_seed(ecommerce_flow, default_catalog) -> None:
-    plan1 = create_generation_plan(ecommerce_flow, default_catalog, total_traces=20, anomaly_ratio=0.2, seed=42)
-    plan2 = create_generation_plan(ecommerce_flow, default_catalog, total_traces=20, anomaly_ratio=0.2, seed=42)
+    plan1 = create_generation_plan(
+        ecommerce_flow, default_catalog, total_traces=20, anomaly_ratio=0.2, seed=42
+    )
+    plan2 = create_generation_plan(
+        ecommerce_flow, default_catalog, total_traces=20, anomaly_ratio=0.2, seed=42
+    )
 
     assert plan1.total_traces == plan2.total_traces
     assert plan1.anomalous_traces_count == plan2.anomalous_traces_count
@@ -33,9 +37,15 @@ def test_planner_deterministic_with_same_seed(ecommerce_flow, default_catalog) -
         assert t1.scheduled_time_unix_nano == t2.scheduled_time_unix_nano
 
 
-def test_planner_different_seed_produces_different_distribution(ecommerce_flow, default_catalog) -> None:
-    plan1 = create_generation_plan(ecommerce_flow, default_catalog, total_traces=50, anomaly_ratio=0.3, seed=42)
-    plan2 = create_generation_plan(ecommerce_flow, default_catalog, total_traces=50, anomaly_ratio=0.3, seed=999)
+def test_planner_different_seed_produces_different_distribution(
+    ecommerce_flow, default_catalog
+) -> None:
+    plan1 = create_generation_plan(
+        ecommerce_flow, default_catalog, total_traces=50, anomaly_ratio=0.3, seed=42
+    )
+    plan2 = create_generation_plan(
+        ecommerce_flow, default_catalog, total_traces=50, anomaly_ratio=0.3, seed=999
+    )
 
     anom_indices_1 = [t.index for t in plan1.traces if t.is_anomalous]
     anom_indices_2 = [t.index for t in plan2.traces if t.is_anomalous]
@@ -44,11 +54,15 @@ def test_planner_different_seed_produces_different_distribution(ecommerce_flow, 
 
 
 def test_planner_anomaly_ratio_boundary(ecommerce_flow, default_catalog) -> None:
-    plan_zero = create_generation_plan(ecommerce_flow, default_catalog, total_traces=10, anomaly_ratio=0.0)
+    plan_zero = create_generation_plan(
+        ecommerce_flow, default_catalog, total_traces=10, anomaly_ratio=0.0
+    )
     assert plan_zero.anomalous_traces_count == 0
     assert all(not t.is_anomalous for t in plan_zero.traces)
 
-    plan_full = create_generation_plan(ecommerce_flow, default_catalog, total_traces=10, anomaly_ratio=1.0)
+    plan_full = create_generation_plan(
+        ecommerce_flow, default_catalog, total_traces=10, anomaly_ratio=1.0
+    )
     assert plan_full.anomalous_traces_count == 10
     assert all(t.is_anomalous for t in plan_full.traces)
 
@@ -57,4 +71,7 @@ def test_planner_token_estimation(ecommerce_flow, default_catalog) -> None:
     plan = create_generation_plan(ecommerce_flow, default_catalog, total_traces=10)
     assert plan.estimated_prompt_tokens > 0
     assert plan.estimated_completion_tokens > 0
-    assert plan.estimated_total_tokens == plan.estimated_prompt_tokens + plan.estimated_completion_tokens
+    assert (
+        plan.estimated_total_tokens
+        == plan.estimated_prompt_tokens + plan.estimated_completion_tokens
+    )

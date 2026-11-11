@@ -115,9 +115,7 @@ def create_generation_plan(
 
     for i in range(total_traces):
         trace_time_nano = base_time_nano + (i * step_nano) + rng.randint(0, max(1, step_nano // 4))
-        trace_time_iso = datetime.fromtimestamp(
-            trace_time_nano / 1_000_000_000, tz=UTC
-        ).isoformat()
+        trace_time_iso = datetime.fromtimestamp(trace_time_nano / 1_000_000_000, tz=UTC).isoformat()
 
         is_anom = i in anomalous_indices
         if is_anom and compatible_anomalies:

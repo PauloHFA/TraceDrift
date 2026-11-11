@@ -1,0 +1,75 @@
+{# Jinja2 template for generating Trace Blueprints #}
+Você é o gerador de blueprints de observabilidade do TraceDrift.
+Sua tarefa é gerar uma árvore de spans e logs correlacionados no formato JSON para simular a execução de um fluxo distribuído de microsserviços.
+
+IMPORTANTE:
+1. NÃO gere IDs hexadecimais (como trace_id ou span_id). Use apenas rótulos simbólicos simples: "s1", "s2", "s3", etc.
+2. NÃO gere timestamps absolutos ou em nanossegundos. Use apenas "offset_ms" (deslocamento relativo ao início do pai em milissegundos) e "duration_ms" (duração em ms).
+3. O span raiz DEVE ter "parent_ref": null e "offset_ms": 0. Todos os demais spans DEVEM referenciar um ref de pai válido existente.
+4. Spans filhos síncronos devem ter offset_ms + duration_ms <= duration_ms do pai.
+5. Em chamadas com erro, use status: {"code": "ERROR", "message": "descrição do erro"} e adicione ao menos um evento "exception" com attributes {"exception.type": "...", "exception.message": "..."}.
+6. Adicione logs correlacionados referenciando o ref do span em "span_ref" e com severidade ("INFO", "WARN", "ERROR").
+7. Responda ESTRITAMENTE com um objeto JSON válido, sem texto explicativo adicional.
+
+--- FLUXO DE SERVIÇOS ---
+Nome: {{ flow.name }}
+Descrição: {{ flow.description or "N/A" }}
+
+Serviços:
+{% for svc in flow.services %}
+- {{ svc.name }} (Tecnologia: {{ svc.technology }}, Camada: {{ svc.tier or "N/A" }})
+{% endfor %}
+
+Passos do Fluxo:
+{% for step in flow.steps %}
+- Passo: {{ step.name }} | Origem: {{ step.service }} | Operação: {{ step.operation }} | Protocolo: {{ step.protocol }} | Destino: {{ step.target_service or "Nenhum" }} | Assíncrono: {{ step.is_async }} | Latência P50: {{ step.baseline_latency_p50_ms }}ms, P99: {{ step.baseline_latency_p99_ms }}ms
+{% endfor %}
+
+--- CENÁRIO SOLICITADO ---
+{% if is_anomalous %}
+TIPO: ANÔMALO
+Nome da Anomalia: {{ anomaly.name }} (ID: {{ anomaly.id }})
+Descrição: {{ anomaly.description }}
+Assinatura Esperada: {{ anomaly.signature }}
+Causa Raiz Típica: {{ anomaly.typical_root_cause_span }}
+Severidade Padrão: {{ anomaly.default_severity }}
+Instrução: Simule de forma realista essa falha ou degradação distribuída, refletindo a assinatura esperada nos spans, tempos, retries e logs. Defina "root_cause_ref" apontando para o span causador e forneça um resumo técnico em "root_cause_summary".
+{% else %}
+TIPO: NORMAL (LINHA DE BASE)
+Instrução: Gere uma execução saudável de sucesso sem falhas, onde as latências seguem a linha de base (P50/P99), status de todos os spans é "OK", e logs são majoritariamente "INFO". "root_cause_ref" e "root_cause_summary" devem ser null.
+{% endif %}
+
+--- FORMATO JSON ESPERADO ---
+{
+  "scenario": "Título descritivo do cenário",
+  "anomaly_type": "{{ anomaly.id if is_anomalous else 'normal' }}",
+  "spans": [
+    {
+      "ref": "s1",
+      "parent_ref": null,
+      "service_name": "{{ flow.services[0].name }}",
+      "name": "operação raiz",
+      "kind": "SERVER",
+      "offset_ms": 0.0,
+      "duration_ms": 150.0,
+      "status": { "code": "OK" },
+      "attributes": {
+        "http.request.method": "POST",
+        "http.response.status_code": 200
+      },
+      "events": [],
+      "links": []
+    }
+  ],
+  "logs": [
+    {
+      "span_ref": "s1",
+      "severity": "INFO",
+      "body": "Requisição processada com sucesso",
+      "offset_ms": 140.0,
+      "attributes": {}
+    }
+  ],
+  "root_cause_ref": {{ 'null' if not is_anomalous else '"s..."' }},
+  "root_cause_summary": {{ 'null' if not is_anomalous else '"Diagnóstico..."' }}
+}

@@ -32,23 +32,31 @@ ALLOWED_IPV4_NETWORKS = [
     ipaddress.ip_network("10.0.0.0/8"),
     ipaddress.ip_network("172.16.0.0/12"),
     ipaddress.ip_network("192.168.0.0/16"),
-    ipaddress.ip_network("192.0.2.0/24"),      # TEST-NET-1 (RFC 5737)
+    ipaddress.ip_network("192.0.2.0/24"),  # TEST-NET-1 (RFC 5737)
     ipaddress.ip_network("198.51.100.0/24"),  # TEST-NET-2 (RFC 5737)
-    ipaddress.ip_network("203.0.113.0/24"),   # TEST-NET-3 (RFC 5737)
+    ipaddress.ip_network("203.0.113.0/24"),  # TEST-NET-3 (RFC 5737)
 ]
 
 IPV4_PATTERN = re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")
 EMAIL_PATTERN = re.compile(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b")
-ALLOWED_EMAIL_DOMAINS = {"example.com", "example.org", "example.net", "test.local", "tracedrift.internal"}
+ALLOWED_EMAIL_DOMAINS = {
+    "example.com",
+    "example.org",
+    "example.net",
+    "test.local",
+    "tracedrift.internal",
+}
 SECRET_PATTERNS = [
-    re.compile(r"AKIA[0-9A-Z]{16}"),               # AWS Access Key
-    re.compile(r"(?:Bearer\s+)[A-Za-z0-9\-_]{20,}"), # Bearer token
-    re.compile(r"(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9_]{36}"), # GitHub token
+    re.compile(r"AKIA[0-9A-Z]{16}"),  # AWS Access Key
+    re.compile(r"(?:Bearer\s+)[A-Za-z0-9\-_]{20,}"),  # Bearer token
+    re.compile(r"(?:ghp|gho|ghu|ghs|ghr)_[A-Za-z0-9_]{36}"),  # GitHub token
 ]
 
 
 class TraceValidator:
-    def validate_blueprint(self, raw_blueprint: dict[str, Any]) -> tuple[BlueprintTrace | None, ValidationReport]:
+    def validate_blueprint(
+        self, raw_blueprint: dict[str, Any]
+    ) -> tuple[BlueprintTrace | None, ValidationReport]:
         """Layer 1 & Layer 2: Validates schema and graph hierarchy of blueprint."""
         # Layer 1: Schema Validation
         try:
@@ -76,7 +84,9 @@ class TraceValidator:
             return blueprint, ValidationReport(
                 is_valid=False,
                 layer_failed=1,
-                errors=[f"Falha na Camada 1: Esperado exatamente 1 span raiz, encontrados {len(roots)}."],
+                errors=[
+                    f"Falha na Camada 1: Esperado exatamente 1 span raiz, encontrados {len(roots)}."
+                ],
             )
 
         # Layer 2: Graph Structure Validation
@@ -92,7 +102,9 @@ class TraceValidator:
                     return blueprint, ValidationReport(
                         is_valid=False,
                         layer_failed=2,
-                        errors=[f"Falha na Camada 2 (Grafo): Span '{span.ref}' referencia pai inexistente '{span.parent_ref}'."],
+                        errors=[
+                            f"Falha na Camada 2 (Grafo): Span '{span.ref}' referencia pai inexistente '{span.parent_ref}'."
+                        ],
                     )
                 graph.add_edge(span.parent_ref, span.ref)
 
@@ -112,7 +124,9 @@ class TraceValidator:
             return blueprint, ValidationReport(
                 is_valid=False,
                 layer_failed=2,
-                errors=[f"Falha na Camada 2 (Grafo): Spans isolados/órfãos detectados: {sorted(unreachable)}."],
+                errors=[
+                    f"Falha na Camada 2 (Grafo): Spans isolados/órfãos detectados: {sorted(unreachable)}."
+                ],
             )
 
         return blueprint, ValidationReport(is_valid=True)
@@ -149,7 +163,9 @@ class TraceValidator:
             if s.parent_span_id:
                 parent = span_map.get(s.parent_span_id)
                 if not parent:
-                    errors.append(f"Span '{s.span_id}' referencia pai desconhecido '{s.parent_span_id}'.")
+                    errors.append(
+                        f"Span '{s.span_id}' referencia pai desconhecido '{s.parent_span_id}'."
+                    )
                     continue
 
                 is_async = s.kind in ("SPAN_KIND_CONSUMER", "SPAN_KIND_PRODUCER") or bool(s.links)
@@ -184,9 +200,13 @@ class TraceValidator:
             # Modern HTTP conventions check
             attrs = s.attributes
             if "http.method" in attrs:
-                errors.append(f"Atributo obsoleto 'http.method' no span '{s.name}'; use 'http.request.method'.")
+                errors.append(
+                    f"Atributo obsoleto 'http.method' no span '{s.name}'; use 'http.request.method'."
+                )
             if "http.status_code" in attrs:
-                errors.append(f"Atributo obsoleto 'http.status_code' no span '{s.name}'; use 'http.response.status_code'.")
+                errors.append(
+                    f"Atributo obsoleto 'http.status_code' no span '{s.name}'; use 'http.response.status_code'."
+                )
 
         # Correlated Logs Check (RF07)
         for s in trace.spans:
@@ -207,8 +227,11 @@ class TraceValidator:
         if anomaly_type == "retry_storm":
             # Check 3 or more retry spans
             retry_spans = [
-                s for s in trace.spans
-                if "retry" in s.name.lower() or "retry.count" in s.attributes or "retry" in str(s.attributes)
+                s
+                for s in trace.spans
+                if "retry" in s.name.lower()
+                or "retry.count" in s.attributes
+                or "retry" in str(s.attributes)
             ]
             if len(retry_spans) < 3:
                 warnings.append(
@@ -222,7 +245,9 @@ class TraceValidator:
                 )
 
         if errors:
-            return ValidationReport(is_valid=False, layer_failed=3, errors=errors, warnings=warnings)
+            return ValidationReport(
+                is_valid=False, layer_failed=3, errors=errors, warnings=warnings
+            )
 
         # Layer 4: Security and PII Validation
         text_corpus = []
@@ -262,9 +287,13 @@ class TraceValidator:
         # Scan Secrets
         for sec_pattern in SECRET_PATTERNS:
             if sec_pattern.search(full_text):
-                errors.append("Falha na Camada 4 (Segurança): Padrão de credencial/token sensível detectado no dataset.")
+                errors.append(
+                    "Falha na Camada 4 (Segurança): Padrão de credencial/token sensível detectado no dataset."
+                )
 
         if errors:
-            return ValidationReport(is_valid=False, layer_failed=4, errors=errors, warnings=warnings)
+            return ValidationReport(
+                is_valid=False, layer_failed=4, errors=errors, warnings=warnings
+            )
 
         return ValidationReport(is_valid=True, warnings=warnings)

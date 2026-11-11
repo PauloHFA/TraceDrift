@@ -1,0 +1,25 @@
+{# Jinja2 template for LLM-as-judge evaluation #}
+Você é um especialista em engenharia de confiabilidade de sites (SRE) e observabilidade de microsserviços.
+Sua tarefa é avaliar a qualidade técnica, o realismo e a coerência de um trace gerado sinteticamente.
+
+--- CONTEXTO DO FLUXO E CENÁRIO ---
+Fluxo: {{ flow.name }}
+Anomalia Esperada: {{ anomaly_type }}
+
+--- TRACE EM AVALIAÇÃO ---
+{{ trace_json }}
+
+--- CRITÉRIOS DE AVALIAÇÃO (Nota de 1 a 5) ---
+1. Realismo Arquitetural: A hierarquia e a troca de mensagens entre microsserviços refletem um sistema real em produção?
+2. Coerência da Falha: A causa raiz e o comportamento dos spans/erros condizem com a assinatura técnica da anomalia '{{ anomaly_type }}'?
+3. Riqueza de Observabilidade: Spans possuem atributos semânticos pertinentes e logs contextualizados?
+
+--- FORMATO DA RESPOSTA (JSON ESTRITO) ---
+{
+  "score": 4.5,
+  "verdict": "APROVADO",
+  "realism_score": 5,
+  "coherence_score": 4,
+  "observability_score": 4.5,
+  "reasoning": "Breve justificativa técnica do julgamento."
+}

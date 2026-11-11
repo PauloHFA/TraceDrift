@@ -1,0 +1,18 @@
+{# Jinja2 template for corrective retries on validation failure #}
+O blueprint gerado anteriormente falhou na validação de integridade do TraceDrift.
+Por favor, corrija os erros listados abaixo e reenvie ESTRITAMENTE o JSON do blueprint corrigido.
+
+--- ERROS DE VALIDAÇÃO DETECTADOS ---
+{% for err in errors %}
+- {{ err }}
+{% endfor %}
+
+--- BLUEPRINT ANTERIOR COM ERRO ---
+{{ previous_blueprint_json }}
+
+--- INSTRUÇÕES DE CORREÇÃO ---
+1. Assegure que há exatamente 1 span raiz com "parent_ref": null.
+2. Todo span filho deve referenciar um "parent_ref" existente e não ter ciclos.
+3. Para spans síncronos: offset_ms + duration_ms DEVE ser menor ou igual à duration_ms do span pai.
+4. Spans com erro ("ERROR") devem conter mensagem e ao menos um evento "exception" com attributes {"exception.type": "...", "exception.message": "..."}.
+5. Responda ESTRITAMENTE com o JSON corrigido, sem comentários ou texto adicional.

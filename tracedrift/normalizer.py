@@ -112,7 +112,9 @@ class TraceNormalizer:
 
         # Set root start time
         start_nano_by_ref[root_span.ref] = base_time_unix_nano
-        end_nano_by_ref[root_span.ref] = base_time_unix_nano + int(root_span.duration_ms * 1_000_000)
+        end_nano_by_ref[root_span.ref] = base_time_unix_nano + int(
+            root_span.duration_ms * 1_000_000
+        )
 
         # BFS / topological traversal to calculate start/end times
         # Spans can be processed iteratively
@@ -220,7 +222,9 @@ class TraceNormalizer:
             # Materialize links
             links = []
             for link in span.links:
-                target_span_id = ref_to_span_id.get(link.span_ref, generate_span_id(self.seed, trace_index, 99))
+                target_span_id = ref_to_span_id.get(
+                    link.span_ref, generate_span_id(self.seed, trace_index, 99)
+                )
                 links.append(
                     {
                         "trace_id": trace_id,
@@ -288,9 +292,7 @@ class TraceNormalizer:
                     affected_services = [rc_span.service_name]
 
             root_cause_span_id = (
-                ref_to_span_id.get(blueprint.root_cause_ref)
-                if blueprint.root_cause_ref
-                else None
+                ref_to_span_id.get(blueprint.root_cause_ref) if blueprint.root_cause_ref else None
             )
 
         label = TraceLabel(
