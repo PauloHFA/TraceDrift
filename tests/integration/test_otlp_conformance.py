@@ -24,7 +24,9 @@ def test_batch_otlp_protobuf_parsing() -> None:
     for i, bp in enumerate(blueprints):
         bp_obj, _ = validator.validate_blueprint(bp)
         assert bp_obj is not None
-        trace, _ = normalizer.normalize(bp_obj, trace_index=i, base_time_unix_nano=1700000000000000000)
+        trace, _ = normalizer.normalize(
+            bp_obj, trace_index=i, base_time_unix_nano=1700000000000000000
+        )
         otlp = convert_trace_to_otlp_json(trace)
         consolidated_resource_spans.extend(otlp.get("resourceSpans", []))
 

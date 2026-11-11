@@ -30,10 +30,16 @@ def generate_golden_dataset() -> None:
                 "kind": "SERVER",
                 "offset_ms": 0.0,
                 "duration_ms": 350.0,
-                "status": {"code": "ERROR" if anom_id in ("circuit_breaker_tripping", "cascading_timeout", "retry_storm") else "OK"},
+                "status": {
+                    "code": "ERROR"
+                    if anom_id in ("circuit_breaker_tripping", "cascading_timeout", "retry_storm")
+                    else "OK"
+                },
                 "attributes": {
                     "http.request.method": "POST",
-                    "http.response.status_code": 500 if anom_id in ("circuit_breaker_tripping", "cascading_timeout") else 200,
+                    "http.response.status_code": 500
+                    if anom_id in ("circuit_breaker_tripping", "cascading_timeout")
+                    else 200,
                     "url.path": "/api/v1/resource",
                 },
                 "events": [],
@@ -154,7 +160,9 @@ def generate_golden_dataset() -> None:
                     "kind": "CLIENT",
                     "offset_ms": 30.0,
                     "duration_ms": 180.0,
-                    "status": {"code": "ERROR" if "lock" in anom_id or "deadlock" in anom_id else "OK"},
+                    "status": {
+                        "code": "ERROR" if "lock" in anom_id or "deadlock" in anom_id else "OK"
+                    },
                     "attributes": {
                         "db.system": "postgresql",
                         "db.operation": "SELECT",

@@ -29,7 +29,9 @@ def test_cli_send_safety_check(tmp_path: Path) -> None:
     dummy_otlp.write_text('{"resourceSpans": []}', encoding="utf-8")
 
     # Trying to send to external endpoint without --yes fails safety check
-    result = runner.invoke(app, ["send", str(dummy_otlp), "--endpoint", "http://external-prod:4318"])
+    result = runner.invoke(
+        app, ["send", str(dummy_otlp), "--endpoint", "http://external-prod:4318"]
+    )
     assert result.exit_code != 0
     assert "AVISO DE SEGURANÇA" in result.stdout
 

@@ -8,7 +8,6 @@ import shutil
 import time
 from pathlib import Path
 
-import httpx
 import typer
 import yaml
 from rich.console import Console
@@ -22,6 +21,8 @@ from tracedrift.generator import TraceGenerator
 from tracedrift.models import AnomalyCatalog
 from tracedrift.planner import create_generation_plan
 from tracedrift.report import analyze_dataset, generate_dataset_card
+from tracedrift.sender import OTLPSendError, send_otlp_grpc, send_otlp_http
+from tracedrift.telemetry import self_span, setup_self_tracing
 from tracedrift.validator import TraceValidator
 from tracedrift.viz import visualize_traces_file
 
@@ -148,6 +149,9 @@ def generate(
     resume: bool = typer.Option(
         False, "--resume", help="Retoma geração anterior do ponto onde parou"
     ),
+    self_trace: bool = typer.Option(
+        False, "--self-trace", help="Emite traces OTel da própria execução (dogfooding)"
+    ),
     max_tokens_budget: int | None = typer.Option(
         None, "--max-tokens-budget", help="Limite máximo de tokens"
     ),
@@ -181,7 +185,14 @@ def generate(
         console=console,
     )
 
-    with progress:
+    tracer = setup_self_tracing(enabled=self_trace)
+
+    with (
+        self_span(
+            "tracedrift.generate", tracer=tracer, attributes={"count": count, "flow": flow_obj.name}
+        ),
+        progress,
+    ):
         task_id = progress.add_task("Gerando traces...", total=count)
 
         def update_progress(completed: int, _total: int) -> None:
@@ -274,7 +285,9 @@ def validate(
                             valid_count += 1
                         else:
                             invalid_count += 1
-                            console.print(f"[yellow]Linha #{idx} ({trace_obj.trace_id[:8]}...): {rep.errors}[/yellow]")
+                            console.print(
+                                f"[yellow]Linha #{idx} ({trace_obj.trace_id[:8]}...): {rep.errors}[/yellow]"
+                            )
                     else:
                         invalid_count += 1
                         console.print(
@@ -353,28 +366,20 @@ def send(
         f"[cyan]Enviando traces para [bold]{endpoint}[/bold] via OTLP/{protocol.upper()}...[/cyan]"
     )
 
-    if protocol.lower() == "http":
-        try:
-            with httpx.Client(timeout=30.0) as http_cli:
-                resp = http_cli.post(
-                    endpoint,
-                    json=payload,
-                    headers={"Content-Type": "application/json"},
-                )
-            if resp.status_code in (200, 202):
-                console.print(
-                    f"[bold green]Sucesso ({resp.status_code}):[/bold green] Traces recebidos pelo coletor!"
-                )
-            else:
-                console.print(
-                    f"[bold red]Erro do coletor ({resp.status_code}):[/bold red] {resp.text}"
-                )
-                raise typer.Exit(code=1)
-        except Exception as err:
-            console.print(f"[bold red]Falha na conexão com o coletor:[/bold red] {err}")
-            raise typer.Exit(code=1) from err
-    else:
-        console.print("[yellow]Para envio gRPC nativo, use endpoint no formato host:4317.[/yellow]")
+    try:
+        if protocol.lower() == "http":
+            status_code = send_otlp_http(endpoint, payload)
+            console.print(
+                f"[bold green]Sucesso ({status_code}):[/bold green] Traces recebidos pelo coletor OTLP HTTP!"
+            )
+        else:
+            send_otlp_grpc(endpoint, payload)
+            console.print(
+                "[bold green]Sucesso (gRPC OK):[/bold green] Traces recebidos pelo coletor OTLP gRPC!"
+            )
+    except OTLPSendError as err:
+        console.print(f"[bold red]Erro no envio OTLP:[/bold red] {err}")
+        raise typer.Exit(code=1) from err
 
 
 @app.command()

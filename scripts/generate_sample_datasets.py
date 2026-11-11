@@ -49,7 +49,9 @@ async def main() -> None:
         await exporter.write_trace(trace)
 
     await exporter.finalize()
-    print("Successfully generated datasets/sample_traces_100.jsonl, sample_otlp.json, sample_labels.jsonl")
+    print(
+        "Successfully generated datasets/sample_traces_100.jsonl, sample_otlp.json, sample_labels.jsonl"
+    )
 
 
 if __name__ == "__main__":

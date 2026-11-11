@@ -15,7 +15,9 @@ def test_all_20_golden_blueprints_pass_validation() -> None:
     with open(golden_path, encoding="utf-8") as f:
         golden_list = json.load(f)
 
-    assert len(golden_list) == 20, "O conjunto dourado deve conter exatamente 20 blueprints canônicos"
+    assert len(golden_list) == 20, (
+        "O conjunto dourado deve conter exatamente 20 blueprints canônicos"
+    )
 
     validator = TraceValidator()
     normalizer = TraceNormalizer(seed=42, auto_fix=True)
@@ -25,7 +27,9 @@ def test_all_20_golden_blueprints_pass_validation() -> None:
     for idx, bp_raw in enumerate(golden_list):
         # 1. Blueprint Validation (Layer 1 & 2)
         blueprint_obj, bp_report = validator.validate_blueprint(bp_raw)
-        assert bp_report.is_valid is True, f"Blueprint #{idx} ({bp_raw.get('anomaly_type')}) falhou: {bp_report.errors}"
+        assert bp_report.is_valid is True, (
+            f"Blueprint #{idx} ({bp_raw.get('anomaly_type')}) falhou: {bp_report.errors}"
+        )
         assert blueprint_obj is not None
 
         # 2. Normalization
@@ -41,7 +45,9 @@ def test_all_20_golden_blueprints_pass_validation() -> None:
             internal_trace,
             expected_anomaly_type=bp_raw.get("anomaly_type"),
         )
-        assert mat_report.is_valid is True, f"Trace #{idx} ({bp_raw.get('anomaly_type')}) falhou na Camada {mat_report.layer_failed}: {mat_report.errors}"
+        assert mat_report.is_valid is True, (
+            f"Trace #{idx} ({bp_raw.get('anomaly_type')}) falhou na Camada {mat_report.layer_failed}: {mat_report.errors}"
+        )
 
         # 4. OTLP Protobuf Conformance (RNF02)
         otlp_dict = convert_trace_to_otlp_json(internal_trace)
