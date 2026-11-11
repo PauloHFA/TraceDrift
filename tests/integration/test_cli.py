@@ -2,6 +2,7 @@
 
 from pathlib import Path
 
+import pytest
 from typer.testing import CliRunner
 
 from tracedrift.cli import app
@@ -15,16 +16,22 @@ from tracedrift.models import (
 runner = CliRunner()
 
 
-def test_cli_help() -> None:
-    result = runner.invoke(app, ["--help"])
+def test_cli_init_command(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.chdir(tmp_path)
+    result = runner.invoke(app, ["init"])
     assert result.exit_code == 0
-    assert "init" in result.stdout
-    assert "plan" in result.stdout
-    assert "generate" in result.stdout
-    assert "validate" in result.stdout
-    assert "send" in result.stdout
-    assert "report" in result.stdout
-    assert "visualize" in result.stdout
+    assert (tmp_path / "flow.yaml").exists()
+    assert (tmp_path / ".env.example").exists()
+
+
+def test_cli_send_safety_check(tmp_path: Path) -> None:
+    dummy_otlp = tmp_path / "otlp.json"
+    dummy_otlp.write_text('{"resourceSpans": []}', encoding="utf-8")
+
+    # Trying to send to external endpoint without --yes fails safety check
+    result = runner.invoke(app, ["send", str(dummy_otlp), "--endpoint", "http://external-prod:4318"])
+    assert result.exit_code != 0
+    assert "AVISO DE SEGURANÇA" in result.stdout
 
 
 def test_cli_plan_dry_run() -> None:

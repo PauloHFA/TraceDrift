@@ -1,0 +1,1489 @@
+[
+  {
+    "scenario": "Cenário Dourado: Thundering Herd",
+    "anomaly_type": "thundering_herd",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Thundering Herd",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por Thundering Herd: Múltiplos clientes ou workers acordam simultaneamente para computar o mesmo recurso após invalidação de cache, sobrecarregando o backend e o banco de dados."
+  },
+  {
+    "scenario": "Cenário Dourado: Database Lock Contention",
+    "anomaly_type": "database_lock_contention",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "ERROR"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Database Lock Contention",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por Database Lock Contention: Transações concorrentes competem por bloqueios de linha ou tabela exclusivos, acumulando filas de espera e aumentando vertiginosamente o tempo de resposta."
+  },
+  {
+    "scenario": "Cenário Dourado: Circuit Breaker Tripping",
+    "anomaly_type": "circuit_breaker_tripping",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "ERROR"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 500,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s_cb",
+        "parent_ref": "s2",
+        "service_name": "order-service",
+        "name": "circuit_breaker_call",
+        "kind": "CLIENT",
+        "offset_ms": 20.0,
+        "duration_ms": 2.0,
+        "status": {
+          "code": "ERROR",
+          "message": "Circuit breaker is OPEN"
+        },
+        "attributes": {
+          "circuit_breaker.state": "OPEN",
+          "http.response.status_code": 503
+        },
+        "events": [
+          {
+            "name": "exception",
+            "offset_ms": 1.0,
+            "attributes": {
+              "exception.type": "CircuitBreakerOpenException",
+              "exception.message": "Target service unavailable"
+            }
+          }
+        ],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Circuit Breaker Tripping",
+        "offset_ms": 5.0,
+        "attributes": {}
+      },
+      {
+        "span_ref": "s_cb",
+        "severity": "ERROR",
+        "body": "Circuito aberto! Rejeitando chamada imediata.",
+        "offset_ms": 1.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s_cb",
+    "root_cause_summary": "Falha causada por Circuit Breaker Tripping: Após uma sequência repetida de falhas em um serviço downstream, o circuit breaker entra em estado OPEN, rejeitando requisições subsequentes de forma ultra-rápida com erro explícito."
+  },
+  {
+    "scenario": "Cenário Dourado: Downstream Network Partition",
+    "anomaly_type": "downstream_network_partition",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Downstream Network Partition",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por Downstream Network Partition: Isolamento parcial ou perda abrupta de conectividade de rede com um microsserviço ou dependência externa, levando a timeouts sistemáticos de conexão."
+  },
+  {
+    "scenario": "Cenário Dourado: Retry Storm",
+    "anomaly_type": "retry_storm",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "ERROR"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s_retry_1",
+        "parent_ref": "s2",
+        "service_name": "order-service",
+        "name": "HTTP POST /downstream/call (retry #1)",
+        "kind": "CLIENT",
+        "offset_ms": 80.0,
+        "duration_ms": 50.0,
+        "status": {
+          "code": "ERROR",
+          "message": "Downstream timeout, retrying"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 503,
+          "retry.count": 1
+        },
+        "events": [
+          {
+            "name": "exception",
+            "offset_ms": 45.0,
+            "attributes": {
+              "exception.type": "ConnectTimeout",
+              "exception.message": "Connection timed out"
+            }
+          }
+        ],
+        "links": []
+      },
+      {
+        "ref": "s_retry_2",
+        "parent_ref": "s2",
+        "service_name": "order-service",
+        "name": "HTTP POST /downstream/call (retry #2)",
+        "kind": "CLIENT",
+        "offset_ms": 140.0,
+        "duration_ms": 50.0,
+        "status": {
+          "code": "ERROR",
+          "message": "Downstream timeout, retrying"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 503,
+          "retry.count": 2
+        },
+        "events": [
+          {
+            "name": "exception",
+            "offset_ms": 45.0,
+            "attributes": {
+              "exception.type": "ConnectTimeout",
+              "exception.message": "Connection timed out"
+            }
+          }
+        ],
+        "links": []
+      },
+      {
+        "ref": "s_retry_3",
+        "parent_ref": "s2",
+        "service_name": "order-service",
+        "name": "HTTP POST /downstream/call (retry #3)",
+        "kind": "CLIENT",
+        "offset_ms": 200.0,
+        "duration_ms": 50.0,
+        "status": {
+          "code": "ERROR",
+          "message": "Downstream timeout, retrying"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 503,
+          "retry.count": 3
+        },
+        "events": [
+          {
+            "name": "exception",
+            "offset_ms": 45.0,
+            "attributes": {
+              "exception.type": "ConnectTimeout",
+              "exception.message": "Connection timed out"
+            }
+          }
+        ],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Retry Storm",
+        "offset_ms": 5.0,
+        "attributes": {}
+      },
+      {
+        "span_ref": "s_retry_1",
+        "severity": "WARN",
+        "body": "Retry #1 falhou com HTTP 503",
+        "offset_ms": 40.0,
+        "attributes": {}
+      },
+      {
+        "span_ref": "s_retry_2",
+        "severity": "WARN",
+        "body": "Retry #2 falhou com HTTP 503",
+        "offset_ms": 40.0,
+        "attributes": {}
+      },
+      {
+        "span_ref": "s_retry_3",
+        "severity": "WARN",
+        "body": "Retry #3 falhou com HTTP 503",
+        "offset_ms": 40.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s_retry_1",
+    "root_cause_summary": "Falha causada por Retry Storm: Serviços clientes disparam retries imediatos ou sem jitter exponencial após falhas transitórias, multiplicando o volume de requisições e agravando o colapso do downstream."
+  },
+  {
+    "scenario": "Cenário Dourado: Thread Pool Exhaustion",
+    "anomaly_type": "thread_pool_exhaustion",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Thread Pool Exhaustion",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por Thread Pool Exhaustion: Todas as threads de processamento da aplicação ficam retidas em chamadas bloqueantes lentas, impedindo a recepção de novas requisições e gerando filas na porta do servidor."
+  },
+  {
+    "scenario": "Cenário Dourado: Slow Consumer",
+    "anomaly_type": "slow_consumer",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Slow Consumer",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por Slow Consumer: Consumidor assíncrono processa mensagens em ritmo significativamente inferior à taxa de publicação, provocando enfileiramento massivo e dilatação de lag."
+  },
+  {
+    "scenario": "Cenário Dourado: N+1 Query Problem",
+    "anomaly_type": "n_plus_one_query",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: N+1 Query Problem",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por N+1 Query Problem: Padrão ineficiente de acesso a dados onde uma consulta inicial é sucedida por N consultas individuais adicionais em loop dentro de uma única requisição."
+  },
+  {
+    "scenario": "Cenário Dourado: Cache Stampede",
+    "anomaly_type": "cache_stampede",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Cache Stampede",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por Cache Stampede: Expiração simultânea de chave de cache altamente requisitada, forçando centenas de processos concorrentes a regenerar o mesmo resultado pesado no banco."
+  },
+  {
+    "scenario": "Cenário Dourado: Partial DB Failure",
+    "anomaly_type": "partial_db_failure",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Partial DB Failure",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por Partial DB Failure: Falha de um nó específico em um cluster de banco distribuído ou réplica de leitura, causando erros intermitentes de consulta enquanto as escritas persistem."
+  },
+  {
+    "scenario": "Cenário Dourado: Cascading Timeout",
+    "anomaly_type": "cascading_timeout",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "ERROR"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 500,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Cascading Timeout",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por Cascading Timeout: Atraso no serviço mais profundo da cadeia de chamadas esgota sucessivamente os timeouts configurados em cada camada intermediária, propagando falhas até o gateway."
+  },
+  {
+    "scenario": "Cenário Dourado: Connection Pool Starvation",
+    "anomaly_type": "connection_pool_starvation",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Connection Pool Starvation",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por Connection Pool Starvation: O pool de conexões com o banco ou cache esgota todas as conexões ativas devido a vazamento ou operações lentas, bloqueando novas transações na fila de aquisição."
+  },
+  {
+    "scenario": "Cenário Dourado: DNS Resolution Delay",
+    "anomaly_type": "dns_resolution_delay",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: DNS Resolution Delay",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por DNS Resolution Delay: Lentidão intermitente no servidor DNS interno do cluster gera um atraso inicial em cada conexão TCP/HTTP antes mesmo do envio dos bytes da requisição."
+  },
+  {
+    "scenario": "Cenário Dourado: Garbage Collection Pause",
+    "anomaly_type": "garbage_collection_pause",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Garbage Collection Pause",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por Garbage Collection Pause: Pausa do tipo stop-the-world pelo coletor de lixo (GC) congela a execução da JVM ou do runtime, dilatando simultaneamente a duração de todos os spans em andamento."
+  },
+  {
+    "scenario": "Cenário Dourado: Rate Limiter Throttling",
+    "anomaly_type": "rate_limiter_throttling",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Rate Limiter Throttling",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por Rate Limiter Throttling: O serviço de destino aciona algoritmo de limitação de taxa (ex: token bucket) e rejeita requisições excedentes com HTTP 429 Too Many Requests."
+  },
+  {
+    "scenario": "Cenário Dourado: Deadlock Abort",
+    "anomaly_type": "deadlock_abort",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "ERROR"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Deadlock Abort",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por Deadlock Abort: O mecanismo do banco de dados detecta um ciclo de bloqueios mortais entre duas transações concorrentes e encerra abruptamente uma delas com erro de deadlock."
+  },
+  {
+    "scenario": "Cenário Dourado: Asynchronous Queue Overflow",
+    "anomaly_type": "asynchronous_queue_overflow",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Asynchronous Queue Overflow",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por Asynchronous Queue Overflow: A fila de mensagens atinge a cota de memória ou contagem máxima de mensagens não reconhecidas, rejeitando novos envios ou descartando mensagens com overflow."
+  },
+  {
+    "scenario": "Cenário Dourado: Microservice Fallback Degradation",
+    "anomaly_type": "microservice_fallback_degradation",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Microservice Fallback Degradation",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por Microservice Fallback Degradation: O serviço primário falha silenciosamente e o orquestrador aciona um fallback degradado (ex: dados em cache desatualizado ou resposta padrão empobrecida)."
+  },
+  {
+    "scenario": "Cenário Dourado: Hotspot Partition",
+    "anomaly_type": "hotspot_partition",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Hotspot Partition",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por Hotspot Partition: Distribuição desigual de chaves de partição satura desproporcionalmente um único nó do cluster, causando lentidão seletiva em requisições dirigidas a esse tenant/chave."
+  },
+  {
+    "scenario": "Cenário Dourado: Memory Leak Latency Drift",
+    "anomaly_type": "memory_leak_latency_drift",
+    "spans": [
+      {
+        "ref": "s1",
+        "parent_ref": null,
+        "service_name": "api-gateway",
+        "name": "POST /api/v1/resource",
+        "kind": "SERVER",
+        "offset_ms": 0.0,
+        "duration_ms": 350.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "http.request.method": "POST",
+          "http.response.status_code": 200,
+          "url.path": "/api/v1/resource"
+        },
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s2",
+        "parent_ref": "s1",
+        "service_name": "order-service",
+        "name": "handle_request",
+        "kind": "INTERNAL",
+        "offset_ms": 10.0,
+        "duration_ms": 320.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {},
+        "events": [],
+        "links": []
+      },
+      {
+        "ref": "s3",
+        "parent_ref": "s2",
+        "service_name": "postgres-db",
+        "name": "SELECT * FROM records WHERE id = $1",
+        "kind": "CLIENT",
+        "offset_ms": 30.0,
+        "duration_ms": 180.0,
+        "status": {
+          "code": "OK"
+        },
+        "attributes": {
+          "db.system": "postgresql",
+          "db.operation": "SELECT"
+        },
+        "events": [],
+        "links": []
+      }
+    ],
+    "logs": [
+      {
+        "span_ref": "s1",
+        "severity": "INFO",
+        "body": "Recebida requisição para cenário de teste: Memory Leak Latency Drift",
+        "offset_ms": 5.0,
+        "attributes": {}
+      }
+    ],
+    "root_cause_ref": "s3",
+    "root_cause_summary": "Falha causada por Memory Leak Latency Drift: Degradação cumulativa de memória heap provoca frequentes ciclos curtos de coleta de lixo e paginação, aumentando progressivamente os tempos de resposta ao longo do tempo."
+  }
+]

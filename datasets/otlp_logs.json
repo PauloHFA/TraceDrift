@@ -1,0 +1,5064 @@
+{
+  "resourceLogs": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000000005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Thundering Herd"
+              },
+              "attributes": [],
+              "traceId": "5f02f34d2810bc849c818d94b2a4db38",
+              "spanId": "9d77519449113696"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000036005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Database Lock Contention"
+              },
+              "attributes": [],
+              "traceId": "76ec1f9e332ed9f01f60e61586c63da0",
+              "spanId": "a6ad7dde1bf15912"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000072005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Circuit Breaker Tripping"
+              },
+              "attributes": [],
+              "traceId": "64055734d476dfcb74f8662a8aeac383",
+              "spanId": "535f05d0b97c0ffb"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "order-service"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000072031000000",
+              "severityNumber": 17,
+              "severityText": "ERROR",
+              "body": {
+                "stringValue": "Circuito aberto! Rejeitando chamada imediata."
+              },
+              "attributes": [],
+              "traceId": "64055734d476dfcb74f8662a8aeac383",
+              "spanId": "a1b640be7ed34faf"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000108005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Downstream Network Partition"
+              },
+              "attributes": [],
+              "traceId": "e93d81ee62fb5991269c8c8cb0c76e10",
+              "spanId": "746423b93811495c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000144005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Retry Storm"
+              },
+              "attributes": [],
+              "traceId": "f8b38a798614db30844284cc1d5d82b8",
+              "spanId": "a46b5cdddb0d594c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "order-service"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000144130000000",
+              "severityNumber": 13,
+              "severityText": "WARN",
+              "body": {
+                "stringValue": "Retry #1 falhou com HTTP 503"
+              },
+              "attributes": [],
+              "traceId": "f8b38a798614db30844284cc1d5d82b8",
+              "spanId": "943a31d037e9bb09"
+            },
+            {
+              "timeUnixNano": "1700000144190000000",
+              "severityNumber": 13,
+              "severityText": "WARN",
+              "body": {
+                "stringValue": "Retry #2 falhou com HTTP 503"
+              },
+              "attributes": [],
+              "traceId": "f8b38a798614db30844284cc1d5d82b8",
+              "spanId": "946425ab0b1c35cd"
+            },
+            {
+              "timeUnixNano": "1700000144250000000",
+              "severityNumber": 13,
+              "severityText": "WARN",
+              "body": {
+                "stringValue": "Retry #3 falhou com HTTP 503"
+              },
+              "attributes": [],
+              "traceId": "f8b38a798614db30844284cc1d5d82b8",
+              "spanId": "35abafac63342697"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000180005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Thread Pool Exhaustion"
+              },
+              "attributes": [],
+              "traceId": "0fc86c348951cb651838f7222a2e80c2",
+              "spanId": "0fc1273ae00f6ea7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000216005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Slow Consumer"
+              },
+              "attributes": [],
+              "traceId": "d92bd51c41b2cbad2e96b0db056926f4",
+              "spanId": "28c12d60e8eb9309"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000252005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: N+1 Query Problem"
+              },
+              "attributes": [],
+              "traceId": "931c9454938ae24f9ae5ca12991e8a80",
+              "spanId": "de77afb3a4bcff79"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000288005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Cache Stampede"
+              },
+              "attributes": [],
+              "traceId": "b87fe4641f7a07e6dc97592d31e4e4e0",
+              "spanId": "815f4c36b475e26a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000324005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Partial DB Failure"
+              },
+              "attributes": [],
+              "traceId": "72abbf3cae3737d2f1aa3c76310f3efe",
+              "spanId": "e7a02ee23d8e9690"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000360005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Cascading Timeout"
+              },
+              "attributes": [],
+              "traceId": "bd3fad155488fe312d2f34770bfb5b53",
+              "spanId": "461b0127a4da29fd"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000396005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Connection Pool Starvation"
+              },
+              "attributes": [],
+              "traceId": "7b3bcdc8d097137a06e16b54c3d87473",
+              "spanId": "43bbaeadb63e00ec"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000432005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: DNS Resolution Delay"
+              },
+              "attributes": [],
+              "traceId": "f7885c36f458e71e539e1183ef80f2e8",
+              "spanId": "a758dc8ddc75a64b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000468005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Garbage Collection Pause"
+              },
+              "attributes": [],
+              "traceId": "ccb14fe626a34b0169e599351a840cd5",
+              "spanId": "beb49fec6651ca9e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000504005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Rate Limiter Throttling"
+              },
+              "attributes": [],
+              "traceId": "987b89edd359ecb6d40a5f3dbdd9437c",
+              "spanId": "d831a289594d052a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000540005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Deadlock Abort"
+              },
+              "attributes": [],
+              "traceId": "61a41a3675414ff451594107502884b9",
+              "spanId": "a0b27b40455670dc"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000576005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Asynchronous Queue Overflow"
+              },
+              "attributes": [],
+              "traceId": "741bd287ebc76174e99acb01f152cecf",
+              "spanId": "a970c8022c1e469e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000612005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Microservice Fallback Degradation"
+              },
+              "attributes": [],
+              "traceId": "248242ee6b04b3a671cfe1cec99dc247",
+              "spanId": "dfe5d47632e67fcb"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000648005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Hotspot Partition"
+              },
+              "attributes": [],
+              "traceId": "17c7627f5684db0eadd475c2e0ee199e",
+              "spanId": "72cb761b26e121c6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000684005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Memory Leak Latency Drift"
+              },
+              "attributes": [],
+              "traceId": "d3153af1023ffda7917136eadd410ad4",
+              "spanId": "43beb3ea7a184934"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000720005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Thundering Herd"
+              },
+              "attributes": [],
+              "traceId": "4e42fe156f618d8ba96a068071c26a37",
+              "spanId": "3ed062e9f5faa664"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000756005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Database Lock Contention"
+              },
+              "attributes": [],
+              "traceId": "b922e34240400e15c64d191479d02011",
+              "spanId": "74ce438d93ef4a9b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000792005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Circuit Breaker Tripping"
+              },
+              "attributes": [],
+              "traceId": "83da3cf70bbd20e00b8cbdb6f52b97fc",
+              "spanId": "6ed889c14b94c4a8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "order-service"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000792031000000",
+              "severityNumber": 17,
+              "severityText": "ERROR",
+              "body": {
+                "stringValue": "Circuito aberto! Rejeitando chamada imediata."
+              },
+              "attributes": [],
+              "traceId": "83da3cf70bbd20e00b8cbdb6f52b97fc",
+              "spanId": "a93986c958348adc"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000828005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Downstream Network Partition"
+              },
+              "attributes": [],
+              "traceId": "2225b09f370a2dda6a0bd113ed5c445d",
+              "spanId": "ed549d6ee15d27f8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000864005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Retry Storm"
+              },
+              "attributes": [],
+              "traceId": "334b11cac05f7254292255e35c47eec7",
+              "spanId": "08768182c63a9d33"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "order-service"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000864130000000",
+              "severityNumber": 13,
+              "severityText": "WARN",
+              "body": {
+                "stringValue": "Retry #1 falhou com HTTP 503"
+              },
+              "attributes": [],
+              "traceId": "334b11cac05f7254292255e35c47eec7",
+              "spanId": "b880183c5655f524"
+            },
+            {
+              "timeUnixNano": "1700000864190000000",
+              "severityNumber": 13,
+              "severityText": "WARN",
+              "body": {
+                "stringValue": "Retry #2 falhou com HTTP 503"
+              },
+              "attributes": [],
+              "traceId": "334b11cac05f7254292255e35c47eec7",
+              "spanId": "6110ddddea588854"
+            },
+            {
+              "timeUnixNano": "1700000864250000000",
+              "severityNumber": 13,
+              "severityText": "WARN",
+              "body": {
+                "stringValue": "Retry #3 falhou com HTTP 503"
+              },
+              "attributes": [],
+              "traceId": "334b11cac05f7254292255e35c47eec7",
+              "spanId": "ffe67013a53c4e2d"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000900005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Thread Pool Exhaustion"
+              },
+              "attributes": [],
+              "traceId": "7d7baab8297f1875370936c74e1be349",
+              "spanId": "0a7681e35d27662b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000936005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Slow Consumer"
+              },
+              "attributes": [],
+              "traceId": "cc3d598ef2cc1f60ff031504ca1be68d",
+              "spanId": "5208b70e215e6405"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700000972005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: N+1 Query Problem"
+              },
+              "attributes": [],
+              "traceId": "6bed72a2af8e85cbd0b02188d90e0ea0",
+              "spanId": "272f539050118de1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001008005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Cache Stampede"
+              },
+              "attributes": [],
+              "traceId": "32e8fbfe57aca67bf33798d1097273c4",
+              "spanId": "3663328229e35d99"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001044005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Partial DB Failure"
+              },
+              "attributes": [],
+              "traceId": "5d401592701cdf6b99aae31ecae901a9",
+              "spanId": "247228868b4aed27"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001080005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Cascading Timeout"
+              },
+              "attributes": [],
+              "traceId": "819106469089b60523b3e5ccff6266b0",
+              "spanId": "8b594c138cb9ceb5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001116005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Connection Pool Starvation"
+              },
+              "attributes": [],
+              "traceId": "6992251dda916c0d13505a15a6d0b11c",
+              "spanId": "f090bd67347d444d"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001152005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: DNS Resolution Delay"
+              },
+              "attributes": [],
+              "traceId": "6418eadeffdb0c43d72e9ff06164ee52",
+              "spanId": "d39eb245967bfc01"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001188005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Garbage Collection Pause"
+              },
+              "attributes": [],
+              "traceId": "fb71104257891c93e14c0eafc2198b13",
+              "spanId": "e816c0bec0b77163"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001224005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Rate Limiter Throttling"
+              },
+              "attributes": [],
+              "traceId": "fc9509bb7958ac755e34fcddba59b970",
+              "spanId": "37cbff8bbcc6f556"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001260005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Deadlock Abort"
+              },
+              "attributes": [],
+              "traceId": "e687d64550ffc7c7fdc7087d70295d3b",
+              "spanId": "0dd6d7390e093ad5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001296005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Asynchronous Queue Overflow"
+              },
+              "attributes": [],
+              "traceId": "46a60562f354c761136fddfe220bf4e9",
+              "spanId": "ececf520f4595cf0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001332005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Microservice Fallback Degradation"
+              },
+              "attributes": [],
+              "traceId": "d5463c881444dabb4f37743494c9da91",
+              "spanId": "d6d7a718891e7f8a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001368005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Hotspot Partition"
+              },
+              "attributes": [],
+              "traceId": "ac33d664ffc6bcff3a444153cd6992a7",
+              "spanId": "2e54b71c680ad785"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001404005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Memory Leak Latency Drift"
+              },
+              "attributes": [],
+              "traceId": "c29aaf574c1af853bbe6ee6c89b7068f",
+              "spanId": "4de75265b5ff291c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001440005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Thundering Herd"
+              },
+              "attributes": [],
+              "traceId": "4b88b10dcca3e9df670f22f4e7050798",
+              "spanId": "52edac0d6d5285a5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001476005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Database Lock Contention"
+              },
+              "attributes": [],
+              "traceId": "11d73e65f1c6e56b4d391deb18d3507b",
+              "spanId": "bf5eb00a9a8ebef9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001512005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Circuit Breaker Tripping"
+              },
+              "attributes": [],
+              "traceId": "86ccb1864fe77c304c697c75529d27d0",
+              "spanId": "d233aae3a8eafa34"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "order-service"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001512031000000",
+              "severityNumber": 17,
+              "severityText": "ERROR",
+              "body": {
+                "stringValue": "Circuito aberto! Rejeitando chamada imediata."
+              },
+              "attributes": [],
+              "traceId": "86ccb1864fe77c304c697c75529d27d0",
+              "spanId": "afa5fc8f9a779e36"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001548005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Downstream Network Partition"
+              },
+              "attributes": [],
+              "traceId": "90383e7b22485071a710e1968ceba8df",
+              "spanId": "ceb5005cc0ba720c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001584005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Retry Storm"
+              },
+              "attributes": [],
+              "traceId": "4670a77ece37f0b1186d7c878006d196",
+              "spanId": "e5ea412b3a210de8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "order-service"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001584130000000",
+              "severityNumber": 13,
+              "severityText": "WARN",
+              "body": {
+                "stringValue": "Retry #1 falhou com HTTP 503"
+              },
+              "attributes": [],
+              "traceId": "4670a77ece37f0b1186d7c878006d196",
+              "spanId": "77040f923a786791"
+            },
+            {
+              "timeUnixNano": "1700001584190000000",
+              "severityNumber": 13,
+              "severityText": "WARN",
+              "body": {
+                "stringValue": "Retry #2 falhou com HTTP 503"
+              },
+              "attributes": [],
+              "traceId": "4670a77ece37f0b1186d7c878006d196",
+              "spanId": "4a2fea6842786215"
+            },
+            {
+              "timeUnixNano": "1700001584250000000",
+              "severityNumber": 13,
+              "severityText": "WARN",
+              "body": {
+                "stringValue": "Retry #3 falhou com HTTP 503"
+              },
+              "attributes": [],
+              "traceId": "4670a77ece37f0b1186d7c878006d196",
+              "spanId": "6dc22dc0785aa094"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001620005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Thread Pool Exhaustion"
+              },
+              "attributes": [],
+              "traceId": "e1ac3f08c1fbee9dfcbdccb4a23e9710",
+              "spanId": "f687b0bd46275dbc"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001656005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Slow Consumer"
+              },
+              "attributes": [],
+              "traceId": "2f2dc92a54c173deb9386bb889470c4d",
+              "spanId": "c43c005fa3738ae6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001692005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: N+1 Query Problem"
+              },
+              "attributes": [],
+              "traceId": "3a84210dd4d96b9dab3b7d7578547d7b",
+              "spanId": "c8b7e07445684aad"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001728005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Cache Stampede"
+              },
+              "attributes": [],
+              "traceId": "b870c773c104bbbade788a96aa320ef2",
+              "spanId": "c4a917c3d40d9c3a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001764005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Partial DB Failure"
+              },
+              "attributes": [],
+              "traceId": "97c0e1146ae0071e41456daffae2f61c",
+              "spanId": "853cc5831e56b14e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001800005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Cascading Timeout"
+              },
+              "attributes": [],
+              "traceId": "178d5a2e4829f9599765e07cd99e831e",
+              "spanId": "429eff1725109f3c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001836005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Connection Pool Starvation"
+              },
+              "attributes": [],
+              "traceId": "8a7a1a37248fc12dcda0d1df14f77a6c",
+              "spanId": "197ecc62a50069da"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001872005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: DNS Resolution Delay"
+              },
+              "attributes": [],
+              "traceId": "029a6d5212ad39d899732dbb1be8237e",
+              "spanId": "81fe507e308dcc6d"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001908005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Garbage Collection Pause"
+              },
+              "attributes": [],
+              "traceId": "fae3fa97b18a86a290493ddebcfd246b",
+              "spanId": "72080ddedf0007c5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001944005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Rate Limiter Throttling"
+              },
+              "attributes": [],
+              "traceId": "b16524e392634ab5eea5325b7955ec10",
+              "spanId": "5a1869dbc6113ba0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700001980005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Deadlock Abort"
+              },
+              "attributes": [],
+              "traceId": "c5367d9893e52b69b79eb37a9af877b9",
+              "spanId": "7b4bef91b014758e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002016005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Asynchronous Queue Overflow"
+              },
+              "attributes": [],
+              "traceId": "f5b4e4410a990343cda8f40f8cf2a52e",
+              "spanId": "dac47d116cfb9d5b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002052005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Microservice Fallback Degradation"
+              },
+              "attributes": [],
+              "traceId": "c42a8ae4090470b18f37405ecf58ca7b",
+              "spanId": "d398f048e2449882"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002088005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Hotspot Partition"
+              },
+              "attributes": [],
+              "traceId": "69acfa6b10dfa289a549c54ea454da07",
+              "spanId": "f909840224e97b62"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002124005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Memory Leak Latency Drift"
+              },
+              "attributes": [],
+              "traceId": "808392a51bdf19d9386bf4f477f47dcd",
+              "spanId": "09310c2136fa53b2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002160005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Thundering Herd"
+              },
+              "attributes": [],
+              "traceId": "b62c5f77510b63d05f809a79650eb479",
+              "spanId": "f8657ec57890ce70"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002196005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Database Lock Contention"
+              },
+              "attributes": [],
+              "traceId": "9fea63e83b321585233f501ad2b70707",
+              "spanId": "3a8fcb55a5c09e91"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002232005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Circuit Breaker Tripping"
+              },
+              "attributes": [],
+              "traceId": "f86200c1eb5776e83be8021ed6c1b4fe",
+              "spanId": "d65cb7dc2804c1c7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "order-service"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002232031000000",
+              "severityNumber": 17,
+              "severityText": "ERROR",
+              "body": {
+                "stringValue": "Circuito aberto! Rejeitando chamada imediata."
+              },
+              "attributes": [],
+              "traceId": "f86200c1eb5776e83be8021ed6c1b4fe",
+              "spanId": "3c5f5a14d4642854"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002268005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Downstream Network Partition"
+              },
+              "attributes": [],
+              "traceId": "d988df95bfacc68639984db3e48b82d5",
+              "spanId": "1068b989294c770c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002304005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Retry Storm"
+              },
+              "attributes": [],
+              "traceId": "aca09be6fc5fc98082460cbdef2faec9",
+              "spanId": "21956402b9f08ada"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "order-service"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002304130000000",
+              "severityNumber": 13,
+              "severityText": "WARN",
+              "body": {
+                "stringValue": "Retry #1 falhou com HTTP 503"
+              },
+              "attributes": [],
+              "traceId": "aca09be6fc5fc98082460cbdef2faec9",
+              "spanId": "5185a346e39823e6"
+            },
+            {
+              "timeUnixNano": "1700002304190000000",
+              "severityNumber": 13,
+              "severityText": "WARN",
+              "body": {
+                "stringValue": "Retry #2 falhou com HTTP 503"
+              },
+              "attributes": [],
+              "traceId": "aca09be6fc5fc98082460cbdef2faec9",
+              "spanId": "f1e9df4d8f247ec6"
+            },
+            {
+              "timeUnixNano": "1700002304250000000",
+              "severityNumber": 13,
+              "severityText": "WARN",
+              "body": {
+                "stringValue": "Retry #3 falhou com HTTP 503"
+              },
+              "attributes": [],
+              "traceId": "aca09be6fc5fc98082460cbdef2faec9",
+              "spanId": "3a6511e4942f2f46"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002340005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Thread Pool Exhaustion"
+              },
+              "attributes": [],
+              "traceId": "9545db276bc231397aed5ae1c2bcb84a",
+              "spanId": "fac3cf1e4fc772cd"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002376005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Slow Consumer"
+              },
+              "attributes": [],
+              "traceId": "b2102ff6839d80af220e6a21198d0a2f",
+              "spanId": "832f9064fc2043a7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002412005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: N+1 Query Problem"
+              },
+              "attributes": [],
+              "traceId": "ee11e829243c8eff70c4cab3d7a7129e",
+              "spanId": "0d8c9acf4320b523"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002448005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Cache Stampede"
+              },
+              "attributes": [],
+              "traceId": "2c1f69cf36c26bb5fd35c00dd8049f0b",
+              "spanId": "4ae8d0dc405a13b0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002484005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Partial DB Failure"
+              },
+              "attributes": [],
+              "traceId": "ed16658ecb872207f90a9f6bf81af609",
+              "spanId": "c4d643de093d2e49"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002520005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Cascading Timeout"
+              },
+              "attributes": [],
+              "traceId": "593c30399beb2353d1e185dbfc1a4553",
+              "spanId": "fab22f4b88f1d7e7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002556005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Connection Pool Starvation"
+              },
+              "attributes": [],
+              "traceId": "f5f7f5d276c2f49aebe100c0af79895e",
+              "spanId": "c3d95ebae37522cd"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002592005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: DNS Resolution Delay"
+              },
+              "attributes": [],
+              "traceId": "52ed92e7352ddd19b6ad06256c3cdf82",
+              "spanId": "5c1c1e77cdd99beb"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002628005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Garbage Collection Pause"
+              },
+              "attributes": [],
+              "traceId": "b6ebfb7c2684445370cdf9f50e057c15",
+              "spanId": "31a0d7bc70027869"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002664005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Rate Limiter Throttling"
+              },
+              "attributes": [],
+              "traceId": "216d2d182dc618877c992a876b5283ff",
+              "spanId": "1e922d2123d5fdc0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002700005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Deadlock Abort"
+              },
+              "attributes": [],
+              "traceId": "7ca119c890f75440bf025e6af7bb0701",
+              "spanId": "fd9ba35301aaa97a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002736005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Asynchronous Queue Overflow"
+              },
+              "attributes": [],
+              "traceId": "a6aba2acddda3ae5a61ce63f70a75edd",
+              "spanId": "04e27d5ac20b9cc4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002772005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Microservice Fallback Degradation"
+              },
+              "attributes": [],
+              "traceId": "036a723882bd9c86fed9ad030f475a9f",
+              "spanId": "e880728153d732d7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002808005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Hotspot Partition"
+              },
+              "attributes": [],
+              "traceId": "e96052f47b9b0a21f0623f18d837cf58",
+              "spanId": "a1b09a77c461c025"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002844005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Memory Leak Latency Drift"
+              },
+              "attributes": [],
+              "traceId": "21fd675c1c564dc54ceab80090cfb5b8",
+              "spanId": "a70b848566569a66"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002880005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Thundering Herd"
+              },
+              "attributes": [],
+              "traceId": "8196862d370ba2c5df260c361a1492fa",
+              "spanId": "bc3989e7837ff978"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002916005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Database Lock Contention"
+              },
+              "attributes": [],
+              "traceId": "e7295c30bff1545560501855a8ac1523",
+              "spanId": "105bd6b50451667c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002952005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Circuit Breaker Tripping"
+              },
+              "attributes": [],
+              "traceId": "9459db35f0c00c41aa5067786a9b053e",
+              "spanId": "345b89accb0afeb2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "order-service"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002952031000000",
+              "severityNumber": 17,
+              "severityText": "ERROR",
+              "body": {
+                "stringValue": "Circuito aberto! Rejeitando chamada imediata."
+              },
+              "attributes": [],
+              "traceId": "9459db35f0c00c41aa5067786a9b053e",
+              "spanId": "3db48867295bc0a0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700002988005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Downstream Network Partition"
+              },
+              "attributes": [],
+              "traceId": "01f9f7760e8f47a51c4619ee3fdae068",
+              "spanId": "49f99c3f5527baae"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003024005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Retry Storm"
+              },
+              "attributes": [],
+              "traceId": "9507249dc881995826002f2adf302531",
+              "spanId": "3c81f591fa4ba8e9"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "order-service"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003024130000000",
+              "severityNumber": 13,
+              "severityText": "WARN",
+              "body": {
+                "stringValue": "Retry #1 falhou com HTTP 503"
+              },
+              "attributes": [],
+              "traceId": "9507249dc881995826002f2adf302531",
+              "spanId": "773db6f1859ee01b"
+            },
+            {
+              "timeUnixNano": "1700003024190000000",
+              "severityNumber": 13,
+              "severityText": "WARN",
+              "body": {
+                "stringValue": "Retry #2 falhou com HTTP 503"
+              },
+              "attributes": [],
+              "traceId": "9507249dc881995826002f2adf302531",
+              "spanId": "7289b43433d6a27f"
+            },
+            {
+              "timeUnixNano": "1700003024250000000",
+              "severityNumber": 13,
+              "severityText": "WARN",
+              "body": {
+                "stringValue": "Retry #3 falhou com HTTP 503"
+              },
+              "attributes": [],
+              "traceId": "9507249dc881995826002f2adf302531",
+              "spanId": "d5d380254864932f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003060005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Thread Pool Exhaustion"
+              },
+              "attributes": [],
+              "traceId": "a9e71b448e347d13dadc9f848842b31d",
+              "spanId": "8d17dfe6cf6f9016"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003096005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Slow Consumer"
+              },
+              "attributes": [],
+              "traceId": "fbff09b6ad4391740c9bdb35abee1e83",
+              "spanId": "3ff7f622a2e25c6e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003132005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: N+1 Query Problem"
+              },
+              "attributes": [],
+              "traceId": "c3ed46a509b3797e8473d044a713fa9f",
+              "spanId": "bbd345d30a6cb403"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003168005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Cache Stampede"
+              },
+              "attributes": [],
+              "traceId": "7f53958a2e922f2c55ba8521d5deef7d",
+              "spanId": "de559ad0674c24e3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003204005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Partial DB Failure"
+              },
+              "attributes": [],
+              "traceId": "badc359ec71521005f721dfb67dda844",
+              "spanId": "bb13d3f528623f6d"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003240005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Cascading Timeout"
+              },
+              "attributes": [],
+              "traceId": "c10449d031bd6cbfd8c2392ff3e046d3",
+              "spanId": "84560614253800de"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003276005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Connection Pool Starvation"
+              },
+              "attributes": [],
+              "traceId": "044a5e18fc358b1d78e76b58de4dc6b6",
+              "spanId": "045a5223ed74ac61"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003312005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: DNS Resolution Delay"
+              },
+              "attributes": [],
+              "traceId": "c3c93878d17c9cff031cb35e0147f5ca",
+              "spanId": "f5c5bcadd2d3b45b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003348005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Garbage Collection Pause"
+              },
+              "attributes": [],
+              "traceId": "1ede57e357e29ec0e6eaa43292b529e9",
+              "spanId": "2243ef5ad5148242"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003384005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Rate Limiter Throttling"
+              },
+              "attributes": [],
+              "traceId": "a23c522706dff1520e27db9aa3129847",
+              "spanId": "736b1ba61a901d36"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003420005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Deadlock Abort"
+              },
+              "attributes": [],
+              "traceId": "9887f61466c0e5b13685f1ca7d09b7c6",
+              "spanId": "7376c65139348377"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003456005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Asynchronous Queue Overflow"
+              },
+              "attributes": [],
+              "traceId": "e622312529af2f1b50b7c188bc8157bd",
+              "spanId": "8110ca36fad2d43d"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003492005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Microservice Fallback Degradation"
+              },
+              "attributes": [],
+              "traceId": "2acecd441853d3fceb072f15b715fdc2",
+              "spanId": "f0ec56784d6e9ba0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003528005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Hotspot Partition"
+              },
+              "attributes": [],
+              "traceId": "444523654a49a5efb8d4f403349c8a4f",
+              "spanId": "be30e25214728101"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "api-gateway"
+            }
+          },
+          {
+            "key": "deployment.environment",
+            "value": {
+              "stringValue": "synthetic"
+            }
+          },
+          {
+            "key": "tracedrift.generated",
+            "value": {
+              "boolValue": true
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "tracedrift",
+            "version": "0.1.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1700003564005000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "Recebida requisi\u00e7\u00e3o para cen\u00e1rio de teste: Memory Leak Latency Drift"
+              },
+              "attributes": [],
+              "traceId": "c4bf2d468dc036c85efde8700c01fd29",
+              "spanId": "c2efc519e28efd6e"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

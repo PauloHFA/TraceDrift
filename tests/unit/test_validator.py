@@ -2,6 +2,7 @@
 
 from tracedrift.models import (
     GenerationMetadata,
+    InternalLog,
     InternalSpan,
     InternalTrace,
     TraceLabel,
@@ -175,3 +176,78 @@ def test_validator_layer4_detects_real_public_ip() -> None:
     assert report.is_valid is False
     assert report.layer_failed == 4
     assert any("IP público real detectado" in e for e in report.errors)
+
+
+def test_validator_layer2_detects_cycle() -> None:
+    validator = TraceValidator()
+    cyclic_raw = {
+        "scenario": "Cycle Scenario",
+        "anomaly_type": "normal",
+        "spans": [
+            {
+                "ref": "s1",
+                "parent_ref": "s2",  # Cycle s1 -> s2 -> s1
+                "service_name": "srv",
+                "name": "op1",
+                "kind": "SERVER",
+                "offset_ms": 0,
+                "duration_ms": 100,
+            },
+            {
+                "ref": "s2",
+                "parent_ref": "s1",
+                "service_name": "srv",
+                "name": "op2",
+                "kind": "CLIENT",
+                "offset_ms": 10,
+                "duration_ms": 50,
+            },
+        ],
+    }
+    _, report = validator.validate_blueprint(cyclic_raw)
+    assert report.is_valid is False
+    assert report.layer_failed == 1 or report.layer_failed == 2
+
+
+def test_validator_layer4_detects_real_email_and_secrets() -> None:
+    validator = TraceValidator()
+    # Trace containing AWS Secret Key and a real corporate email
+    trace = InternalTrace(
+        trace_id="4bf92f3577b34da6a3ce929d0e0e4736",
+        spans=[
+            InternalSpan(
+                trace_id="4bf92f3577b34da6a3ce929d0e0e4736",
+                span_id="0000000000000001",
+                parent_span_id=None,
+                name="root",
+                service_name="auth",
+                kind="SPAN_KIND_SERVER",
+                start_time_unix_nano=1000,
+                end_time_unix_nano=2000,
+                attributes={"user.email": "john.doe@corporate-bank.com.br"},
+            )
+        ],
+        logs=[
+            InternalLog(
+                trace_id="4bf92f3577b34da6a3ce929d0e0e4736",
+                span_id="0000000000000001",
+                timestamp_unix_nano=1500,
+                severity_text="INFO",
+                severity_number=9,
+                body="Using access key AKIAIOSFODNN7EXAMPLE for S3",
+                service_name="auth",
+            )
+        ],
+        label=TraceLabel(
+            trace_id="4bf92f3577b34da6a3ce929d0e0e4736",
+            anomaly_type="normal",
+            is_anomalous=False,
+        ),
+        metadata=GenerationMetadata(model="test", prompt_version="v1", seed=42),
+    )
+
+    report = validator.validate_materialized_trace(trace)
+    assert report.is_valid is False
+    assert report.layer_failed == 4
+    assert any("E-mail com domínio real" in e for e in report.errors)
+    assert any("credencial/token sensível" in e for e in report.errors)

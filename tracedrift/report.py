@@ -33,9 +33,12 @@ def analyze_dataset(dataset_dir: str | Path) -> DatasetReport:
     dir_path = Path(dataset_dir)
     traces_file = dir_path / "traces.jsonl"
     rejected_file = dir_path / "rejected.jsonl"
-
     if not traces_file.exists():
-        raise FileNotFoundError(f"Arquivo traces.jsonl não encontrado em '{dir_path}'.")
+        fallback_files = list(dir_path.glob("*traces*.jsonl"))
+        if fallback_files:
+            traces_file = fallback_files[0]
+        else:
+            raise FileNotFoundError(f"Nenhum arquivo de traces JSONL encontrado em '{dir_path}'.")
 
     report = DatasetReport()
     durations_ms: list[float] = []

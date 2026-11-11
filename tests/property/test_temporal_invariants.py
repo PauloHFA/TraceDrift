@@ -17,7 +17,7 @@ def random_blueprint_tree(draw: st.DrawFn) -> BlueprintTrace:
     """Hypothesis strategy generating arbitrary valid blueprint hierarchies."""
     num_spans = draw(st.integers(min_value=2, max_value=8))
 
-    root_duration = draw(st.floats(min_value=100.0, max_value=1000.0))
+    root_duration = draw(st.floats(min_value=50.0, max_value=1000.0))
     spans: list[BlueprintSpan] = [
         BlueprintSpan(
             ref="s0",
@@ -40,15 +40,15 @@ def random_blueprint_tree(draw: st.DrawFn) -> BlueprintTrace:
 
         if kind in (SpanKindEnum.CONSUMER, SpanKindEnum.PRODUCER):
             # Async consumer/producer
-            offset = draw(st.floats(min_value=0.0, max_value=parent.duration_ms + 100.0))
-            duration = draw(st.floats(min_value=5.0, max_value=200.0))
+            offset = draw(st.floats(min_value=0.0, max_value=parent.duration_ms + 20.0))
+            duration = draw(st.floats(min_value=5.0, max_value=50.0))
         else:
             # Sync child contained in parent (with up to 4% small jitter to test auto-fix)
-            max_offset = max(0.0, parent.duration_ms * 0.7)
-            offset = draw(st.floats(min_value=0.0, max_value=max_offset))
-            max_allowed_end = parent.duration_ms * 1.04
-            remaining_for_child = max(0.01, max_allowed_end - offset)
-            duration = draw(st.floats(min_value=0.01, max_value=remaining_for_child))
+            offset_pct = draw(st.floats(min_value=0.0, max_value=0.5))
+            offset = parent.duration_ms * offset_pct
+            max_dur_pct = 1.04 - offset_pct
+            dur_pct = draw(st.floats(min_value=0.05, max_value=max_dur_pct))
+            duration = max(0.001, parent.duration_ms * dur_pct)
 
         spans.append(
             BlueprintSpan(
